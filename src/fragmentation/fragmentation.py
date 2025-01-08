@@ -6,6 +6,7 @@ from transform.base import SMILES
 from typing import List, Set
 from itertools import combinations
 import random
+from utils.commom import convert2rdmol
 
 class Unit:
     def __init__(self,
@@ -219,4 +220,14 @@ class Fragmentation:
     def decompose(cls, 
                   mol: SMILES|Mol
                   ):
-        rdmol = 
+        rdmol = convert2rdmol(mol)
+        fragmented_mol = cls.fragmentation(rdmol)
+        if len(fragmented_mol) == 1:
+            fragments = []
+        else:
+            fragments = [
+                Chem.MolToSmiles(unit.to_fragment(connection))
+                for unit in fragmented_mol.units
+                for connection in unit.connections
+            ]
+        return fragments

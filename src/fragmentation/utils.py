@@ -72,8 +72,6 @@ def create_bond(rwmol: Mol,
         if atom_numexplicitHs:
             atom.SetNumExplicitHs(atom_numexplicitHs - 1)
 
-def convert2rdmol()
-
 def merge(scaffold: Mol,
           fragment: Mol,
           scaffold_index,
