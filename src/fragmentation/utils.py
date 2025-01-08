@@ -41,3 +41,61 @@ def convert_to_SMILES(mol: SMILES|Mol, canonicalize: bool = False,
             mol = Chem.MolToSmiles(Chem.MolFromSmiles(mol), isomericSmiles=False)
     return mol
 
+def check_dummy_atom(atom):
+    return atom.GetAtomicNum() == 0
+
+def find_dummy_atom(rdmol: Mol):
+    for idx, atom in enumerate(rdmol.GetAtoms()):
+        if check_dummy_atom(atom):
+            return idx
+    return idx
+
+def get_dummy_bondtype(dummy_atom: Atom):
+    bondtype = dummy_atom.GetTotalValence()
+    assert bondtype in [1,2,3]
+    if bondtype == 1:
+        return BondType.SINGLE
+    elif bondtype == 2:
+        return BondType.DOUBLE
+    else:
+        return BondType.TRIPLE
+    
+def create_bond(rwmol: Mol,
+                idx1,
+                idx2,
+                bondtype
+                ):
+    rwmol.AddBond(idx1, idx2, bondtype)
+    for idx in [idx1, idx2]:
+        atom = rwmol.GetAtomWithIdx(idx)
+        atom_numexplicitHs = atom.GetNumExplicitHs()
+        if atom_numexplicitHs:
+            atom.SetNumExplicitHs(atom_numexplicitHs - 1)
+
+def convert2rdmol()
+
+def merge(scaffold: Mol,
+          fragment: Mol,
+          scaffold_index,
+          fragment_index
+          ):
+    
+    if fragment_index is None:
+        fragment_index = find_dummy_atom(fragment)
+    assert fragment_index is not None
+
+    rwmol = Chem.RWMol(Chem.CombineMols(scaffold, fragment))
+    dummy_atom_index = scaffold.GetNumAtoms() + fragment_index
+
+    dummy_atom = rwmol.GetAtomWithIdx(dummy_atom_index)
+    assert check_dummy_atom(dummy_atom)
+    bondtype = get_dummy_bondtype(dummy_atom)
+
+    fragment_index = dummy_atom.GetNeighbors()[0].GetIdx()
+    create_bond(rwmol, scaffold_index, fragment_index, bondtype)
+    rwmol.RemoveAtom(dummy_atom)
+    mol = rwmol.GetMol()
+    Chem.SanitizeMol(mol)
+
+    return mol
+

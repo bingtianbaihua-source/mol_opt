@@ -196,3 +196,27 @@ class FragmentedGraph:
                 neighbors.update(unit.neighbors)
                 neighbors = neighbors.difference(traj)
         return traj
+    
+def fragmentation(mol: SMILES|Mol):
+    return FragmentedGraph(Mol)
+
+class Fragmentation:
+    fragmentation = staticmethod(fragmentation)
+
+    def __call__(self,
+                 mol: SMILES|Mol):
+        return self.fragmentation(mol)
+    
+    @staticmethod
+    def merge(scaffold: Mol,
+              fragment: Mol,
+              scaffold_atom_index,
+              fragment_atom_index
+              ):
+        return merge(scaffold, fragment, scaffold_atom_index, fragment_atom_index)
+    
+    @classmethod
+    def decompose(cls, 
+                  mol: SMILES|Mol
+                  ):
+        rdmol = 
