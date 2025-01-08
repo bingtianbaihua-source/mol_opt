@@ -23,18 +23,22 @@ class Readout(nn.Module):
     def __init__(
         self,
         node_dim: int,
+        hidden_dim: int,
         output_dim: int,
+        global_input_dim: Optional[int] = None,
         activation: Optional[str] = None,
         dropout: float = 0.0,
     ):
         super(Readout, self).__init__()
 
-        self.linear1 = nn.Linear(node_dim, output_dim)
-        self.linear2 = nn.Linear(node_dim, output_dim)
+        self.linear1 = nn.Linear(node_dim + global_input_dim, hidden_dim)
+        self.linear2 = nn.Linear(hidden_dim, output_dim)
         self.activation = nn.ReLU(inplace=True) if activation is None else getattr(nn, activation)()
         self.dropout = nn.Dropout(dropout)
 
-    def forward(self, x: Tensor, node2graph: OptTensor = None) -> Tensor:
+    def forward(self, x: Tensor, 
+                node2graph: OptTensor = None,
+                global_x: Optional[FloatTensor] = None) -> Tensor:
         """
         x: [V, F]
         node2graph: optional, [V, ]
@@ -47,7 +51,10 @@ class Readout(nn.Module):
             max_pool = x.max(dim=0, keepdim=True)[0]      # V, F -> 1, F
         
         # Concatenate the average and max pool results
-        pooled = torch.cat([avg_pool, max_pool], dim=-1)  # N, 2*F
+        if global_x is not None:
+            pooled = torch.cat([avg_pool, max_pool, global_x], dim=-1)
+        else:
+            pooled = torch.cat([avg_pool, max_pool], dim=-1)  # N, 2*F
 
         # Apply the linear layers, activation, and dropout
         out = self.linear1(pooled)
