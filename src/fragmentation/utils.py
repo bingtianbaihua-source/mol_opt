@@ -1,8 +1,20 @@
 from rdkit import Chem
-from rdkit.Chem import Mol, Atom, BondType
+from rdkit.Chem import Mol, Atom, BondType, RWMol
 from transform.base import SMILES
 
 def create_bond(rwmol, idx1, idx2, bondtype):
+    rwmol.AddBond(idx1, idx2, bondtype)
+    for idx in [idx1, idx2]:
+        atom = rwmol.GetAtomWithIdx(idx)
+        atom_numexplicitHs = atom.GetNumExplicitHs()
+        if atom_numexplicitHs:
+            atom.SetNumExplicitHs(atom_numexplicitHs - 1)
+
+def remove_bond(rwmol: RWMol, 
+                idx1, 
+                idx2,
+                bondtype
+                ):
     rwmol.AddBond(idx1, idx2, bondtype)
     for idx in [idx1, idx2]:
         atom = rwmol.GetAtomWithIdx(idx)
