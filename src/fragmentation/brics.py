@@ -60,7 +60,7 @@ class BRICS_FragmentedGraph(FragmentedGraph):
             bond_index = mol.GetBondBetweenAtoms(atom_idx1, atom_idx2).GetIdx()
             bondtype = mol.GetBondBetweenAtoms(atom_idx1, atom_idx2).GetBondType()
             unit1 = unit_map[atom_idx1]
-            unit2 = unit_map[atom_idx2]
+            unit2 = unit_map[atom_idx2] 
             connection = BRICS_Connection(unit1, 
                                           unit2, 
                                           atom_idx1, 

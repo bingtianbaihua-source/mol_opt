@@ -12,7 +12,7 @@ import numpy as np
 class BBARDataset(Dataset):
 
     def __init__(self,
-                 molecules: List[Mol|SMILES],
+                 molecules: list[Mol|SMILES],
                  fragmented_molecules: list[BRICS_FragmentedGraph],
                  properties: list[dict[str,float]],
                  library: BRICS_BlockLibrary,
