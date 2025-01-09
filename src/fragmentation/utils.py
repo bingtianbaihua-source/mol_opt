@@ -13,14 +13,12 @@ def create_bond(rwmol, idx1, idx2, bondtype):
 def remove_bond(rwmol: RWMol, 
                 idx1, 
                 idx2,
-                bondtype
                 ):
-    rwmol.AddBond(idx1, idx2, bondtype)
+    rwmol.RemoveBond(idx1, idx2)
     for idx in [idx1, idx2]:
         atom = rwmol.GetAtomWithIdx(idx)
-        atom_numexplicitHs = atom.GetNumExplicitHs()
-        if atom_numexplicitHs:
-            atom.SetNumExplicitHs(atom_numexplicitHs - 1)
+        if atom.GetSymbol() == 'N' and atom.GetIsAromatic():
+            atom.SetNumExplicitHs(1)
 
 def add_dummy_atom(rwmol, index, bondtype=BondType.SINGLE, label=0):
     dummy_atom = Atom("*")

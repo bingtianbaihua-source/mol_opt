@@ -144,7 +144,7 @@ class BlockLibrary:
                   mol: Mol|SMILES
                   ):
         try:
-            res = cls.fragmentation.decompose()
+            res = cls.fragmentation.decompose(mol)
             return res
         except:
             return None
