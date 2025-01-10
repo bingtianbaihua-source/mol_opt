@@ -9,7 +9,7 @@ import torch
 from transform.core import CoreGraphTransform
 import numpy as np
 
-class BBARDataset(Dataset):
+class MyDataset(Dataset):
 
     def __init__(self,
                  molecules: list[Mol|SMILES],
@@ -21,7 +21,7 @@ class BBARDataset(Dataset):
                  num_negative_samples: int,
                  train: bool = True,
                  ):
-        super(BBARDataset, self).__init__()
+        super(MyDataset, self).__init__()
         assert len(molecules) == len(properties)
 
         self.molecules = molecules
