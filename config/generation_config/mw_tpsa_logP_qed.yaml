@@ -1,0 +1,8 @@
+model_path: /home/chaoxue/code/open_source/BBAR/result/ZINC/5000sample_mw_tpsa_logp_qed/save/best.tar
+library_path: /home/chaoxue/code/open_source/BBAR/data/ZINC/5000_data/library.csv
+library_builtin_model_path: ./test/builtin_model/best.tar 
+
+# Required
+window_size: 2000
+alpha: 0.75
+max_iteration: 10

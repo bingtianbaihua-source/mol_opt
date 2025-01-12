@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: your_project_name
+Version: 0.1
+Requires-Dist: flask
+Requires-Dist: rdkit
+Requires-Dist: pyyaml
