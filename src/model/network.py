@@ -1,17 +1,17 @@
 import torch
 from torch import nn, FloatTensor, LongTensor
-from typing import OrderedDict, Tuple, Dict, Union
-from layers.graph_embedding import GraphEmbeddingModel
-from layers.condition_embedding import ConditionEmbeddingModel
-from layers.property_prediction import PropertyPredictionModel
-from layers.termination_prediction import TerminationPredictionModel
-from layers.block_selection import BlockSelectionModel
-from layers.atom_selection import AtomSelectionModel
-from transform.feature import NUM_ATOM_FEATURES, NUM_BOND_FEATURES
-from transform.block import NUM_BLOCK_FEATURES
+from typing import OrderedDict, Tuple
+from .layers import GraphEmbeddingModel
+from .layers import ConditionEmbeddingModel
+from .layers import PropertyPredictionModel
+from .layers import TerminationPredictionModel
+from .layers import BlockSelectionModel
+from .layers import AtomSelectionModel
+from transform import NUM_ATOM_FEATURES, NUM_BOND_FEATURES
+from transform import NUM_BLOCK_FEATURES
 from torch_geometric.data import Data, Batch
 from torch_geometric.typing import Adj
-from utils.typing import *
+from src.utils import PropertyVector, GraphVector, NodeVector, EdgeVector
 
 class BlockConnectionPredictor(nn.Module):
 
@@ -63,7 +63,7 @@ class BlockConnectionPredictor(nn.Module):
 
     def standardize_property(
             self,
-            property: Dict[str, float|FloatTensor]
+            property: dict[str, float|FloatTensor]
     ):
         assert property.keys() == self.property_keys
         property = [(property[key] - mean) / std

@@ -8,7 +8,7 @@ from omegaconf import OmegaConf
 from options.generation_options import Scaffold_Generation_ArgParser
 import random
 import itertools
-from generate.utils import compose
+from generate.generator_utils import compose
 from transform.core import CoreGraphTransform
 from torch.distributions.categorical import Categorical
 

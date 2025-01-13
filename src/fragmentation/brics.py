@@ -2,7 +2,7 @@ from .fragmentation import Unit, Connection, FragmentedGraph
 from rdkit import Chem
 from .utils import add_dummy_atom, remove_bond
 from rdkit.Chem import BRICS, Mol
-from library import BlockLibrary
+from .library import BlockLibrary
 
 class BRICS_Connection(Connection):
     def __init__(self, 

@@ -1,8 +1,8 @@
 import argparse
 
-class Denovo_Generation_ArgParser(argparse.ArgumentParser):
+class _Generation_ArgParser(argparse.ArgumentParser):
     def __init__(self, **kwargs):
-        super(Denovo_Generation_ArgParser, self).__init__( **kwargs)
+        super(_Generation_ArgParser, self).__init__( **kwargs)
         self.formatter_class = argparse.ArgumentDefaultsHelpFormatter
 
         generator_args = self.add_argument_group('generator')
@@ -21,7 +21,7 @@ class Denovo_Generation_ArgParser(argparse.ArgumentParser):
         opt_args.add_argument('--seed', type=int, help='explicit random seed')
         opt_args.add_argument('-q', action='store_true', help='no print sampling script message')
 
-class Scaffold_Generation_ArgParser(Denovo_Generation_ArgParser):
+class Scaffold_Generation_ArgParser(_Generation_ArgParser):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

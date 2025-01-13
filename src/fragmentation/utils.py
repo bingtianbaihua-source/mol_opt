@@ -1,6 +1,6 @@
 from rdkit import Chem
 from rdkit.Chem import Mol, Atom, BondType, RWMol
-from transform.base import SMILES
+from src.utils import SMILES
 
 def create_bond(rwmol, idx1, idx2, bondtype):
     rwmol.AddBond(idx1, idx2, bondtype)

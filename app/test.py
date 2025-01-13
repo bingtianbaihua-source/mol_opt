@@ -95,8 +95,10 @@ class ModelManager:
             self.args = parser.parse_args(args)
             
             # 初始化生成器
-            from src.generate.generator import MoleculeBuilder # 需要替换为实际的导入
+            print(1)
+            from src import MoleculeBuilder # 需要替换为实际的导入            print(2)
             self.generator = MoleculeBuilder(self.args)
+            print(3)
             
             # 存储配置
             self.config = config

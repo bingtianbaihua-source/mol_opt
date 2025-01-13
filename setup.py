@@ -1,13 +1,15 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="your_project_name",
+    name="molecule_builder",
     version="0.1",
     packages=find_packages(),
     install_requires=[
-        'flask',
-        'rdkit',
-        'pyyaml',
-        # 其他依赖...
+        "rdkit",
+        "torch",
+        "torch_geometric",
+        "numpy",
+        "pandas",
     ],
+    python_requires=">=3.7",
 )

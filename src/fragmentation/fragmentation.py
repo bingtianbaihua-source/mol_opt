@@ -2,11 +2,11 @@ from typing import Tuple
 from rdkit import Chem
 from rdkit.Chem import Mol, BondType
 from .utils import *
-from transform.base import SMILES
+from src.utils import SMILES
 from typing import List, Set
 from itertools import combinations
 import random
-from utils.commom import convert2rdmol
+from src.utils import convert2rdmol
 
 class Unit:
     def __init__(self,

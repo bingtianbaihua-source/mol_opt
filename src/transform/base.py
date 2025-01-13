@@ -12,9 +12,9 @@ from torch import FloatTensor
 from torch_geometric.data import Data as PyGData
 from torch_geometric.typing import Adj
 from rdkit.Chem import Atom, Bond, Mol
-from bbar.utils.typing import NodeVector, EdgeVector, GlobalVector, SMILES
+from src.utils import NodeVector, EdgeVector, GlobalVector, SMILES
 
-from bbar.utils.common import check_and_convert_to_rdmol
+from src.utils import check_and_convert2rdmol
 from .feature import get_atom_features, get_bond_features, get_bond_index, get_mol_features
 
 __all__ = ['MolGraphTransform']
@@ -34,7 +34,7 @@ class MolGraphTransform() :
 
     @classmethod
     def processing(cls, mol: Union[SMILES, Mol]) -> Dict:
-        rdmol = check_and_convert_to_rdmol(mol)
+        rdmol = check_and_convert2rdmol(mol)
 
         retval = {}
 

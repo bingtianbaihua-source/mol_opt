@@ -8,7 +8,7 @@ from torch_geometric.typing import Adj
 from torch import LongTensor
 from torch_geometric.data import Data as PyGData, Batch as PyGBatch
 
-from utils.typing import NodeVector, EdgeVector, GlobalVector, GraphVector
+from src.utils import NodeVector, EdgeVector, GlobalVector, GraphVector
 from typing import Union
 
 class GraphEmbeddingModel(nn.Module):

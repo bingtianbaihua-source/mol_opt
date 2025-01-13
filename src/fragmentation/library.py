@@ -4,9 +4,9 @@ import os
 import torch
 import logging
 from rdkit import Chem
-from utils.typing import SMILES
+from src.utils import SMILES
 from rdkit.Chem import Mol
-from utils.commom import convert2SMILES
+from src.utils import convert2SMILES
 
 class BlockLibrary:
     fragmentation = Fragmentation()

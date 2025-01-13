@@ -1,9 +1,8 @@
 from torch import nn
-from graph_embedding import GraphEmbeddingModel
+from .graph_embedding import GraphEmbeddingModel
 from .block.fc import Linear
 from torch import FloatTensor, LongTensor
 from torch_geometric.typing import Adj
-from typing import Optional
 import torch
 from torch_scatter.composite import scatter_softmax
 

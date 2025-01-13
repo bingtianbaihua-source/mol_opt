@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torch import FloatTensor
-from block.fc import Linear
+from .block.fc import Linear
 
 class BlockSelectionModel(nn.Module):
     def __init__(self, 
