@@ -1,0 +1,164 @@
+2025-01-13 20:22:24,961 - __main__ - INFO - 初始化 ModelManager
+/home/chaoxue/code/mol_opt/app/test.py:83
+
+2025-01-13 20:22:24,966 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:22:24,966 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:22:24,966 - werkzeug - INFO -  * Restarting with stat
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:22:26,857 - __main__ - INFO - 初始化 ModelManager
+/home/chaoxue/code/mol_opt/app/test.py:83
+
+2025-01-13 20:22:26,860 - werkzeug - WARNING -  * Debugger is active!
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:22:26,860 - werkzeug - INFO -  * Debugger PIN: 745-151-305
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:22:26,869 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 20:22:26] "GET / HTTP/1.1" 200 -
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:22:26,887 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 20:22:26] "[36mGET /static/js/tmp.js HTTP/1.1[0m" 304 -
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:22:31,593 - __main__ - INFO - 收到初始化模型请求
+/home/chaoxue/code/mol_opt/app/test.py:264
+
+2025-01-13 20:22:31,594 - __main__ - DEBUG - 请求数据: {'new_key': 'mw', 'conditions': {'mw': 564}}
+/home/chaoxue/code/mol_opt/app/test.py:266
+
+2025-01-13 20:22:31,594 - __main__ - INFO - 初始化模型，key: mw, conditions: {'mw': 564}
+/home/chaoxue/code/mol_opt/app/test.py:277
+
+2025-01-13 20:22:31,594 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 564}
+/home/chaoxue/code/mol_opt/app/test.py:96
+
+2025-01-13 20:22:31,594 - __main__ - ERROR - 初始化模型失败: 未找到配置key: mw
+/home/chaoxue/code/mol_opt/app/test.py:149
+
+2025-01-13 20:22:31,594 - __main__ - ERROR - Exception occurred:
+/home/chaoxue/code/mol_opt/app/test.py:66
+Traceback (most recent call last):
+  File "/home/chaoxue/code/mol_opt/app/test.py", line 107, in initialize
+    raise ValueError(f"未找到配置key: {new_key}")
+ValueError: 未找到配置key: mw
+2025-01-13 20:22:31,594 - __main__ - ERROR - Traceback (most recent call last):
+  File "/home/chaoxue/code/mol_opt/app/test.py", line 107, in initialize
+    raise ValueError(f"未找到配置key: {new_key}")
+ValueError: 未找到配置key: mw
+
+/home/chaoxue/code/mol_opt/app/test.py:67
+
+2025-01-13 20:22:31,595 - __main__ - ERROR - 模型初始化失败
+/home/chaoxue/code/mol_opt/app/test.py:281
+
+2025-01-13 20:22:31,595 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 20:22:31] "[35m[1mPOST /init_model HTTP/1.1[0m" 500 -
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:22:34,538 - __main__ - INFO - 收到初始化模型请求
+/home/chaoxue/code/mol_opt/app/test.py:264
+
+2025-01-13 20:22:34,538 - __main__ - DEBUG - 请求数据: {'new_key': 'mw', 'conditions': {'mw': 564}}
+/home/chaoxue/code/mol_opt/app/test.py:266
+
+2025-01-13 20:22:34,539 - __main__ - INFO - 初始化模型，key: mw, conditions: {'mw': 564}
+/home/chaoxue/code/mol_opt/app/test.py:277
+
+2025-01-13 20:22:34,539 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 564}
+/home/chaoxue/code/mol_opt/app/test.py:96
+
+2025-01-13 20:22:34,539 - __main__ - ERROR - 初始化模型失败: 未找到配置key: mw
+/home/chaoxue/code/mol_opt/app/test.py:149
+
+2025-01-13 20:22:34,539 - __main__ - ERROR - Exception occurred:
+/home/chaoxue/code/mol_opt/app/test.py:66
+Traceback (most recent call last):
+  File "/home/chaoxue/code/mol_opt/app/test.py", line 107, in initialize
+    raise ValueError(f"未找到配置key: {new_key}")
+ValueError: 未找到配置key: mw
+2025-01-13 20:22:34,539 - __main__ - ERROR - Traceback (most recent call last):
+  File "/home/chaoxue/code/mol_opt/app/test.py", line 107, in initialize
+    raise ValueError(f"未找到配置key: {new_key}")
+ValueError: 未找到配置key: mw
+
+/home/chaoxue/code/mol_opt/app/test.py:67
+
+2025-01-13 20:22:34,539 - __main__ - ERROR - 模型初始化失败
+/home/chaoxue/code/mol_opt/app/test.py:281
+
+2025-01-13 20:22:34,540 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 20:22:34] "[35m[1mPOST /init_model HTTP/1.1[0m" 500 -
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:23:03,503 - __main__ - INFO - 初始化 ModelManager
+/home/chaoxue/code/mol_opt/app/test.py:83
+
+2025-01-13 20:23:03,507 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:23:03,507 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:23:03,508 - werkzeug - INFO -  * Restarting with stat
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:23:05,347 - __main__ - INFO - 初始化 ModelManager
+/home/chaoxue/code/mol_opt/app/test.py:83
+
+2025-01-13 20:23:05,349 - werkzeug - WARNING -  * Debugger is active!
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:23:05,350 - werkzeug - INFO -  * Debugger PIN: 745-151-305
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:23:22,631 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 20:23:22] "GET / HTTP/1.1" 200 -
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:23:22,644 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 20:23:22] "[36mGET /static/js/tmp.js HTTP/1.1[0m" 304 -
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:23:25,980 - __main__ - INFO - 收到初始化模型请求
+/home/chaoxue/code/mol_opt/app/test.py:264
+
+2025-01-13 20:23:25,980 - __main__ - DEBUG - 请求数据: {'new_key': 'mw', 'conditions': {'mw': 23}}
+/home/chaoxue/code/mol_opt/app/test.py:266
+
+2025-01-13 20:23:25,980 - __main__ - INFO - 初始化模型，key: mw, conditions: {'mw': 23}
+/home/chaoxue/code/mol_opt/app/test.py:277
+
+2025-01-13 20:23:25,980 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 23}
+/home/chaoxue/code/mol_opt/app/test.py:96
+
+2025-01-13 20:23:25,980 - __main__ - ERROR - 初始化模型失败: 未找到配置key: mw
+/home/chaoxue/code/mol_opt/app/test.py:149
+
+2025-01-13 20:23:25,980 - __main__ - ERROR - Exception occurred:
+/home/chaoxue/code/mol_opt/app/test.py:66
+Traceback (most recent call last):
+  File "/home/chaoxue/code/mol_opt/app/test.py", line 107, in initialize
+    raise ValueError(f"未找到配置key: {new_key}")
+ValueError: 未找到配置key: mw
+2025-01-13 20:23:25,981 - __main__ - ERROR - Traceback (most recent call last):
+  File "/home/chaoxue/code/mol_opt/app/test.py", line 107, in initialize
+    raise ValueError(f"未找到配置key: {new_key}")
+ValueError: 未找到配置key: mw
+
+/home/chaoxue/code/mol_opt/app/test.py:67
+
+2025-01-13 20:23:25,981 - __main__ - ERROR - 模型初始化失败
+/home/chaoxue/code/mol_opt/app/test.py:281
+
+2025-01-13 20:23:25,981 - werkzeug - INFO - 127.0.0.1 - - [13/Jan/2025 20:23:25] "[35m[1mPOST /init_model HTTP/1.1[0m" 500 -
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:24:51,862 - werkzeug - INFO -  * Detected change in '/home/chaoxue/code/mol_opt/app/test.py', reloading
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+
+2025-01-13 20:24:52,180 - werkzeug - INFO -  * Restarting with stat
+/home/chaoxue/miniconda3/lib/python3.12/site-packages/werkzeug/_internal.py:97
+

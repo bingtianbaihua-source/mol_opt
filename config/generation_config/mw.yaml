@@ -1,6 +1,6 @@
-model_path: ./test/pretrained_model/mw.tar
+model_path: /home/chaoxue/code/mol_opt/weight/mw.tar
 library_path: ./data/ZINC/library.csv
-library_builtin_model_path: ./test/builtin_model/mw.tar 
+library_builtin_model_path: None
 
 # Required
 window_size: 2000

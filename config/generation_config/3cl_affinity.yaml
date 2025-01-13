@@ -1,4 +1,4 @@
-model_path: ./test/pretrained_model/3cl_affinity.tar
+model_path: /home/chaoxue/code/mol_opt/weight/3cl_affinity.tar
 library_path: ./data/3CL_ZINC/library.csv
 library_builtin_model_path: ./test/builtin_model/3cl_affinity.tar 
 

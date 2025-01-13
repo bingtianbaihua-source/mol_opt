@@ -25,9 +25,9 @@ from src.fragmentation import BRICS_BlockLibrary
 from src.transform import CoreGraphTransform
 from src.transform import BlockGraphTransform
 from src.model import BlockConnectionPredictor
-from utils import convert2rdmol
+from src.utils import convert2rdmol
 
-from . import generate_utils as generator_utils
+from .generator_utils import *
 
 RDLogger.DisableLog('rdApp.*')
 
@@ -62,6 +62,7 @@ class MoleculeBuilder:
                 self.save_builtin_model(library_builtin_model_path)
 
         # Setup Library Information
+        print(Chem.MolToSmiles(self.library.get_rdmol(1)))
         library_freq = self.library.frequency_distribution
         self.library_freq_weighted = library_freq ** config.alpha
         self.window_size = min(len(self.library), config.window_size)
@@ -158,6 +159,8 @@ class MoleculeBuilder:
             # Sample block
             block_idx = self.sample_block(prob_dist_block)
             block_mol = self.library.get_rdmol(block_idx)
+            # print(Chem.MolToSmiles(block_mol))
+            # print(Chem.MolToSmiles(self.library.get_rdmol(1)))
 
             # Predict Index
             Z_block = self.Z_library[block_idx].unsqueeze(0)
@@ -167,7 +170,7 @@ class MoleculeBuilder:
                 continue
 
             # Compose
-            composed_mol = generator_utils.compose(core_mol, block_mol, atom_idx, 0)
+            composed_mol = compose(core_mol, block_mol, atom_idx, 0)
             if composed_mol is not None :
                 return ADDITION, composed_mol
         return FAIL, None
@@ -180,7 +183,7 @@ class MoleculeBuilder:
     def get_prob_dist_block(self, core_mol, Z_core) :
         prob_dist_block = torch.zeros((len(self.library), )) 
 
-        brics_labels = [int(label) for label in generator_utils.get_possible_brics_labels(core_mol)]
+        brics_labels = [int(label) for label in get_possible_brics_labels(core_mol)]
         block_index_list = torch.where(self.library_mask[brics_labels].sum(dim=0) > 0)[0]
         if block_index_list.size(0) == 0 :
             return prob_dist_block
@@ -207,7 +210,8 @@ class MoleculeBuilder:
         )
         # Masking
         masked_prob_dist_atom = torch.zeros_like(prob_dist_atom)
-        atom_idxs = [atom_idx for atom_idx, _ in generator_utils.get_possible_indexs(core_mol, block_mol)]
+        print(Chem.MolToSmiles(block_mol))
+        atom_idxs = [atom_idx for atom_idx, _ in get_possible_indexs(core_mol, block_mol)]
         masked_prob_dist_atom[atom_idxs] = prob_dist_atom[atom_idxs]
 
         # Sampling
@@ -241,8 +245,8 @@ class MoleculeBuilder:
 
     def get_library_mask(self, library) -> BoolTensor:
         library_mask = torch.zeros((len(library), 17), dtype=torch.bool)
-        for i, brics_label in enumerate(library.brics_label_list) : 
-            allow_brics_label_list = generator_utils.BRICS_ENV_INT[brics_label]
+        for i, brics_label in enumerate(library.brics_labels_list) : 
+            allow_brics_label_list = BRICS_ENV_INT[brics_label]
             for allow_brics_label in allow_brics_label_list :
                 library_mask[i, allow_brics_label] = True
         return library_mask.T   # (17, n_library)

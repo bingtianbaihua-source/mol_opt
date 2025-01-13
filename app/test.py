@@ -1,5 +1,7 @@
 import os
 import sys
+import logging
+import traceback
 # 获取项目根目录的绝对路径
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 # 将项目根目录添加到Python路径
@@ -10,11 +12,22 @@ from rdkit.Chem import Draw
 from rdkit.Chem import AllChem
 from rdkit.Chem import rdDepictor
 from src.options.generation_options import Scaffold_Generation_ArgParser
-# from rdkit.Chem import rdMolDraw2D
+from src.generate import compose
+from rdkit.Chem.Draw import rdMolDraw2D
 import base64
 import io
 import pickle
 import yaml
+from omegaconf import OmegaConf
+from rdkit.Chem import Mol
+from src.utils import *
+from torch import FloatTensor
+from src.transform import CoreGraphTransform
+import torch
+
+TERMINATION = 1
+ADDITION = 2
+FAIL = 3
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'
@@ -29,6 +42,17 @@ MODEL_CONFIG_MAP = {
     'qed': r'config/generation_config/qed.yaml',
     'tpsa': r'config/generation_config/tpsa.yaml',
 }
+
+# 设置日志配置
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('app.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 # 模型管理类
 class ModelManager:
@@ -45,13 +69,15 @@ class ModelManager:
             'mw_logp': r'config/generation_config/mw_logp.yaml',
             'logp_tpsa': r'config/generation_config/logp_tpsa.yaml',
             'mw': r'config/generation_config/mw.yaml',
-            'mw_tpsa_logP_qed': r'config/generation_config/mw_tpsa_logP_qed.yaml',
+            'mw_logp_tpsa_qed': r'config/generation_config/mw_logp_tpsa_qed.yaml',
             'qed': r'config/generation_config/qed.yaml',
             'tpsa': r'config/generation_config/tpsa.yaml',
         }
     
     def initialize(self, new_key, conditions):
         try:
+            logger.info(f"开始初始化模型，key: {new_key}, conditions: {conditions}")
+            
             # 验证条件参数
             if not conditions or not isinstance(conditions, dict):
                 raise ValueError("无效的条件参数")
@@ -64,59 +90,51 @@ class ModelManager:
                 raise ValueError(f"未找到配置key: {new_key}")
                 
             config_path = self.config_map[new_key]
+            logger.debug(f"使用配置文件: {config_path}")
             
             # 检查配置文件是否存在
             if not os.path.exists(config_path):
                 raise FileNotFoundError(f"配置文件不存在: {config_path}")
             
-            # 读取配置文件
-            with open(config_path, 'r') as f:
-                config = yaml.safe_load(f)
-            
-            # 创建参数解析器
-            parser = Scaffold_Generation_ArgParser()
-            
-            # 设置基本参数
-            args = [
-                '--generator_config', config.get('generator_config', './config/generator.yaml'),
-                '--num_samples', str(config.get('num_samples', 5)),
-                '--seed', str(config.get('seed', 42))
-            ]
-            
-            # 添加模型相关参数
-            if 'model_path' in config:
-                args.extend(['--model_path', config['model_path']])
-            if 'library_path' in config:
-                args.extend(['--library_path', config['library_path']])
-            if 'library_builtin_model_path' in config:
-                args.extend(['--library_builtin_model_path', config['library_builtin_model_path']])
-            
-            # 解析参数
-            self.args = parser.parse_args(args)
-            
-            # 初始化生成器
-            print(1)
-            from src import MoleculeBuilder # 需要替换为实际的导入            print(2)
-            self.generator = MoleculeBuilder(self.args)
-            print(3)
-            
-            # 存储配置
-            self.config = config
-            
-            # 验证条件参数与配置的一致性
-            config_props = set(config.get('properties', []))
-            cond_props = set(conditions.keys())
-            if not cond_props.issubset(config_props):
-                invalid_props = cond_props - config_props
-                raise ValueError(f"无效的条件属性: {invalid_props}")
+            try:
+                # 创建参数解析器
+                parser = Scaffold_Generation_ArgParser()
+                args, remain_args = parser.parse_known_args()
+                logger.debug(f"解析参数: {args}")
+                
+                generator_cfg = OmegaConf.load(config_path)
+                logger.debug(f"加载配置: {generator_cfg}")
+                
+                # Overwrite Config
+                if args.model_path is not None:
+                    generator_cfg.model_path = args.model_path
+                if args.library_path is not None:
+                    generator_cfg.library_path = args.library_path
+                if args.library_builtin_model_path is not None:
+                    generator_cfg.library_builtin_model_path = args.library_builtin_model_path
+                
+                # 初始化生成器
+                logger.info("开始初始化 MoleculeBuilder")
+                from src import MoleculeBuilder
+                logger.debug("导入 MoleculeBuilder 成功")
+                
+                self.generator = MoleculeBuilder(generator_cfg)
+                logger.info("MoleculeBuilder 初始化成功")
+                
+            except Exception as e:
+                logger.error(f"初始化生成器时发生错误: {str(e)}")
+                logger.error(f"错误堆栈: {traceback.format_exc()}")
+                raise
             
             return True
             
         except Exception as e:
-            print(f"初始化模型时发生错误: {str(e)}")
+            logger.error(f"初始化模型时发生错误: {str(e)}")
+            logger.error(f"错误堆栈: {traceback.format_exc()}")
             return False
     
     def generate(self, scaffold_mol, conditions=None):
+
         try:
             if self.generator is None:
                 raise Exception("生成器未初始化")
@@ -125,30 +143,74 @@ class ModelManager:
             use_conditions = conditions if conditions is not None else self.conditions
             
             # 将mol对象转换为SMILES
-            scaffold_smiles = Chem.MolToSmiles(scaffold_mol)
-            
-            # 设置scaffold参数
-            self.args.scaffold = scaffold_smiles
-            
-            # 调用生成器的生成方法
-            results = self.generator.generate(
-                scaffold=scaffold_smiles,
-                conditions=use_conditions,
-                num_samples=self.args.num_samples
-            )
-            
-            # 处理结果
-            processed_results = []
-            for result in results:
-                mol = Chem.MolFromSmiles(result['smiles'])
-                if mol is not None:
-                    processed_results.append((mol, result.get('probability', 0.0)))
-            
-            return processed_results
-            
+            core_mol: Mol = convert2rdmol(scaffold_mol)
+            stand_cond = self.generator.model.standardize_property(use_conditions)
+            return self._step(core_mol, stand_cond)
+
         except Exception as e:
             print(f"生成过程中发生错误: {str(e)}")
             return []
+        
+    def _step(self, 
+              core_mol: Mol|SMILES,
+              standardized_condition: FloatTensor = None,
+              ):
+        core_mol: Mol = convert2rdmol(core_mol)
+        
+        pygdata_core = CoreGraphTransform.call(core_mol)
+        x_upd_core, Z_core = self.generator.model.core_molecule_embedding(pygdata_core)
+        
+        # Condition Embedding
+        x_upd_core, Z_core = self.generator.model.condition_embedding(x_upd_core, Z_core, standardized_condition)
+
+        # Predict Termination
+        termination = self.generator.predict_termination(Z_core)
+        if termination :
+            return TERMINATION, None
+
+        # Sampling building blocks
+        prob_dist_block = self.generator.get_prob_dist_block(core_mol, Z_core)
+        sampled_indices = torch.multinomial(prob_dist_block, 10, replacement=False)
+        print(sampled_indices)
+        sampled_probs = prob_dist_block[sampled_indices]
+        print(sampled_probs)
+
+        step_res = []
+        for idx,prob in zip(sampled_indices, sampled_probs):
+            print(0)
+            block_mol = self.generator.library.get_rdmol(idx)
+            print(Chem.MolToSmiles(block_mol))
+            print(1)
+            Z_block = self.generator.Z_library[idx].unsqueeze(0)
+            print(2)
+            try:
+                print(Chem.MolToSmiles(block_mol))
+                atom_idx = self.generator.predict_atom_idx(core_mol, block_mol, pygdata_core, x_upd_core, Z_core, Z_block)
+                print(3)
+            except Exception as e:
+                import traceback
+                print("完整的错误追踪:")
+                print(traceback.format_exc())
+                
+                raise  # 重新抛出异常，保持原有的错误处理流程
+            if atom_idx is None :
+                continue
+            print(4)
+            try:
+                composed_mol = compose(core_mol, block_mol, atom_idx, 0)
+            except Exception as e:
+                import traceback
+                print("完整的错误追踪:")
+                print(traceback.format_exc())
+                
+                raise
+            print(5)
+            if composed_mol is not None :
+                step_res.append((block_mol, prob, atom_idx))
+                if len(step_res) >= 5:
+                    return step_res
+                
+        return step_res
     
     def get_model(self):
         return self.generator
@@ -197,7 +259,10 @@ def index():
 @app.route('/init_model', methods=['POST'])
 def init_model():
     try:
+        logger.info("收到初始化模型请求")
         data = request.get_json()
+        logger.debug(f"请求数据: {data}")
+        
         if not data:
             return jsonify({
                 'status': 'error',
@@ -207,25 +272,18 @@ def init_model():
         new_key = data.get('new_key')
         conditions = data.get('conditions')
         
-        if not new_key:
-            return jsonify({
-                'status': 'error',
-                'message': '缺少new_key参数'
-            }), 400
-            
-        if not conditions:
-            return jsonify({
-                'status': 'error',
-                'message': '缺少conditions参数'
-            }), 400
+        logger.info(f"初始化模型，key: {new_key}, conditions: {conditions}")
         
         # 初始化模型
         if not model_manager.initialize(new_key, conditions):
+            logger.error("模型初始化失败")
             return jsonify({
                 'status': 'error',
                 'message': '模型初始化失败'
             }), 500
             
+        logger.info("模型初始化成功")
+        
         # 存储必要的信息到session
         session['model_initialized'] = True
         session['config_key'] = new_key
@@ -238,6 +296,8 @@ def init_model():
         })
         
     except Exception as e:
+        logger.error(f"处理请求时发生错误: {str(e)}")
+        logger.error(f"错误堆栈: {traceback.format_exc()}")
         return jsonify({
             'status': 'error',
             'message': f'模型初始化失败: {str(e)}'
@@ -265,16 +325,8 @@ def upload_smi():
                 'message': '无效的SMILES字符串'
             }), 400
             
-        # 生成2D坐标
-        AllChem.Compute2DCoords(mol)
-        
-        # 最简单的方式生成分子图像
-        img = Draw.MolToImage(mol)
-        
-        # 转换为base64
-        buffered = io.BytesIO()
-        img.save(buffered, format="PNG")
-        img_str = base64.b64encode(buffered.getvalue()).decode()
+        # 生成带有原子索引的分子图像
+        img_str = draw_molecule_with_atom_indices(mol)
         
         # 将mol对象序列化
         mol_pkl = pickle.dumps(mol)
@@ -283,7 +335,7 @@ def upload_smi():
         return jsonify({
             'status': 'success',
             'message': 'SMILES解析成功',
-            'image': f'data:image/png;base64,{img_str}',
+            'image': img_str,
             'mol': mol_b64
         })
         
@@ -313,25 +365,24 @@ def process_mol():
         mol_pkl = base64.b64decode(mol_b64)
         scaffold_mol = pickle.loads(mol_pkl)
         
-        # 获取模型实例
-        model = model_manager.get_model()
-        if model is None:
-            return jsonify({
-                'status': 'error',
-                'message': '模型未初始化'
-            }), 400
+        # # 获取模型实例
+        # model = model_manager.get_model()
+        # if model is None:
+        #     return jsonify({
+        #         'status': 'error',
+        #         'message': '模型未初始化'
+        #     }), 400
             
         # 调用模型的generate方法
         try:
-            results = model.generate(scaffold_mol, conditions)
-            
-            # 确保结果不超过5个
-            results = results[:5]
+            results = model_manager.generate(scaffold_mol, conditions)
+            print(results)
             
             # 处理结果列表
             processed_results = []
-            for idx, (mol, prob) in enumerate(results):
+            for idx,ele in enumerate(results):
                 # 生成分子图像
+                mol,prob,atom_idx = ele
                 img = Draw.MolToImage(mol)
                 buffered = io.BytesIO()
                 img.save(buffered, format="PNG")
@@ -344,7 +395,7 @@ def process_mol():
                 processed_results.append({
                     'mol': mol_b64,
                     'probability': float(prob),
-                    'index': idx,
+                    'index': atom_idx,
                     'image': f'data:image/png;base64,{img_str}'
                 })
             
@@ -554,6 +605,34 @@ def process_compose():
             'status': 'error',
             'message': f'处理过程中发生错误: {str(e)}'
         }), 500
+
+def draw_molecule_with_atom_indices(mol):
+    """
+    绘制分子结构并显示原子索引
+    """
+    # 生成2D坐标（如果还没有的话）
+    if mol.GetNumConformers() == 0:
+        rdDepictor.Compute2DCoords(mol)
+    
+    # 创建绘图对象
+    d = rdMolDraw2D.MolDraw2DCairo(400, 400)  # 可以调整图像大小
+    
+    # 设置绘图选项
+    opts = d.drawOptions()
+    opts.addAtomIndices = True  # 显示原子索引
+    opts.additionalAtomLabelPadding = 0.25  # 调整标签间距
+    
+    # 绘制分子
+    d.DrawMolecule(mol)
+    d.FinishDrawing()
+    
+    # 转换为图像
+    png = d.GetDrawingText()
+    
+    # 转换为base64
+    img_str = base64.b64encode(png).decode()
+    
+    return f'data:image/png;base64,{img_str}'
 
 if __name__ == '__main__':
     app.run(debug=True)

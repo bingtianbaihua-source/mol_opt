@@ -1,36 +1,44 @@
 import torch
 import torch.nn as nn
 from torch import FloatTensor
-from .block.fc import Linear
+from . import block
 
-class PropertyPredictionModel(nn.Module):
-    def __init__(self, 
-                 core_graph_vector_dim: int,
-                 property_dim: int,
-                 hidden_dim: int = 128,
-                 dropout: float = 0.0
-                 ) -> None:
-        super(PropertyPredictionModel, self).__init__()
-
+class PropertyPredictionModel(nn.Module) :
+    def __init__(
+        self,
+        core_graph_vector_dim: int,
+        property_dim: int,
+        hidden_dim: int = 128,
+        dropout: float = 0.0
+    ) :
+        super(PropertyPredictionModel, self).__init__()    
         self.mlp = nn.Sequential(
-            Linear(
+            block.Linear(
                 input_dim = core_graph_vector_dim,
                 output_dim = hidden_dim,
-                activation='relu',
-                dropout=dropout
+                activation = 'relu',
+                dropout = dropout
             ),
-            Linear(
+            block.Linear(
                 input_dim = hidden_dim,
                 output_dim = hidden_dim,
-                activation='relu',
-                dropout=dropout
+                activation = 'relu',
+                dropout = dropout
             ),
-            Linear(
+            block.Linear(
                 input_dim = hidden_dim,
-                output_dim = hidden_dim,
-                activation=None,
+                output_dim = property_dim,
+                activation = None,
             )
         )
 
-    def forward(self, Z_core: FloatTensor):
-        return self.mlp(Z_core)
+    def forward(self, Z_core: FloatTensor) -> FloatTensor:
+        """
+        Input :
+            Z_core: graph vector of core molecule.  (N, F_z_core)
+
+        Output:
+            predicted property value
+        """
+        y = self.mlp(Z_core)            # (N, Fz) -> (N, Fh) -> (N, Fc)
+        return y

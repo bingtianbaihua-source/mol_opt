@@ -9,8 +9,8 @@ import pandas as pd
 import gc
 import logging
 
-from utils.typing import *
-from utils.commom import convert2rdmol, convert2SMILES
+from src.utils import *
+# from utils.commom import convert2rdmol, convert2SMILES
 
 p = re.compile('\[\d+\*\]')
 
@@ -96,8 +96,8 @@ def compose(
     returnMol: bool = True,
     ) -> Union[SMILES, Mol] :
 
-    core = convert2rdmol(core)
-    block = convert2rdmol(block)
+    # core = convert2rdmol(core)
+    # block = convert2rdmol(block)
 
     # Validity Check
     atom_core = core.GetAtomWithIdx(atom_idx_core)
@@ -159,7 +159,8 @@ def get_possible_indexs(core: Union[SMILES, Mol],
     core = convert2rdmol(core)
 
     if block is not None :
-        block = convert2rdmol(block)
+        # block = convert2rdmol(block)
+        print(Chem.MolToSmiles(block))
         brics_label_block = str(block.GetAtomWithIdx(0).GetIsotope())
         brics_label_list = BRICS_ENV[brics_label_block]
     else :

@@ -1,4 +1,4 @@
 from .generator import MoleculeBuilder
-from . import generate_utils
+from .generator_utils import compose
 
-__all__ = ['MoleculeBuilder', 'generate_utils']
+__all__ = ['MoleculeBuilder', 'compose']

@@ -12,9 +12,9 @@ class BlockLibrary:
     fragmentation = Fragmentation()
 
     def __init__(self,
-                 library_path: str|None,
-                 smiles_list: list[str]|None,
-                 frequency_list: FloatTensor|None,
+                 library_path: str|None = None,
+                 smiles_list: list[str]|None = None,
+                 frequency_list: FloatTensor|None = None,
                  use_frequency:bool = True,
                  save_rdmol: bool = False,
                  ):
