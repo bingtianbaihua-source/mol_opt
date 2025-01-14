@@ -2769,3 +2769,195 @@ RuntimeError: Parent directory ./test/builtin_model does not exist.
 2025-01-14 12:50:55,539 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8066 196
 2025-01-14 12:50:55,544 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 12:50:55] "POST /process_mol HTTP/1.1" 200 -
 2025-01-14 12:51:02,006 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 12:51:02] "[33mPOST /select HTTP/1.1[0m" 404 -
+2025-01-14 21:35:07,986 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-14 21:35:07,986 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-14 21:35:07,987 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 21:35:09,846 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 21:35:09,846 - werkzeug - INFO -  * Debugger PIN: 745-151-305
+2025-01-14 21:35:10,003 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 21:35:10] "GET / HTTP/1.1" 200 -
+2025-01-14 21:35:10,014 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 21:35:10] "[36mGET /static/js/tmp.js HTTP/1.1[0m" 304 -
+2025-01-14 21:35:14,029 - __main__ - INFO - 收到初始化模型请求
+2025-01-14 21:35:14,029 - __main__ - DEBUG - 请求数据: {'new_key': 'mw', 'conditions': {'mw': 343}}
+2025-01-14 21:35:14,029 - __main__ - INFO - 初始化模型，key: mw, conditions: {'mw': 343}
+2025-01-14 21:35:14,029 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 343}
+2025-01-14 21:35:14,029 - __main__ - DEBUG - 使用配置文件: config/generation_config/mw.yaml
+2025-01-14 21:35:14,030 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-14 21:35:14,032 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/mw.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': 'None', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-14 21:35:14,032 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-14 21:35:14,032 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-14 21:35:16,340 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-14 21:35:16,340 - __main__ - INFO - 模型初始化成功
+2025-01-14 21:35:16,340 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 21:35:16] "POST /init_model HTTP/1.1" 200 -
+2025-01-14 21:35:20,135 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 21:35:20] "POST /upload_smi HTTP/1.1" 200 -
+2025-01-14 21:35:20,244 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 21:35:20,244 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 21:35:20,244 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 21:35:20,244 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 8192
+2025-01-14 21:35:20,245 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8289 162
+2025-01-14 21:35:20,245 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8463 225
+2025-01-14 21:35:20,245 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8700 133
+2025-01-14 21:35:20,250 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 21:35:20,250 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 21:35:20,250 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 21:35:20,250 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 8192
+2025-01-14 21:35:20,251 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8518 266
+2025-01-14 21:35:20,251 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8796 343
+2025-01-14 21:35:20,251 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 9151 189
+2025-01-14 21:35:20,257 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 21:35:20,258 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 21:35:20,258 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 21:35:20,258 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 8192
+2025-01-14 21:35:20,258 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 9293 227
+2025-01-14 21:35:20,259 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 9532 316
+2025-01-14 21:35:20,259 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 9860 186
+2025-01-14 21:35:20,265 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 21:35:20,265 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 21:35:20,265 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 21:35:20,265 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 6895
+2025-01-14 21:35:20,266 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 6966 166
+2025-01-14 21:35:20,266 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 7144 247
+2025-01-14 21:35:20,266 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 7403 123
+2025-01-14 21:35:20,271 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 21:35:20,271 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 21:35:20,271 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 21:35:20,271 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 7427
+2025-01-14 21:35:20,272 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 7498 221
+2025-01-14 21:35:20,272 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 7731 292
+2025-01-14 21:35:20,272 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8035 163
+2025-01-14 21:35:20,279 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 21:35:20] "POST /process_mol HTTP/1.1" 200 -
+2025-01-14 21:35:22,460 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 21:35:22] "[33mPOST /select HTTP/1.1[0m" 404 -
+2025-01-14 21:38:38,007 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 21:38:38] "[33mPOST /select HTTP/1.1[0m" 404 -
+2025-01-14 21:49:25,344 - werkzeug - INFO -  * Detected change in '/home/chaoxue/code/mol_opt/app/test.py', reloading
+2025-01-14 21:49:26,020 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 21:49:29,146 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 21:49:29,146 - werkzeug - INFO -  * Debugger PIN: 745-151-305
+2025-01-14 21:59:16,950 - werkzeug - INFO -  * Detected change in '/home/chaoxue/code/mol_opt/app/test.py', reloading
+2025-01-14 21:59:17,517 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 21:59:20,669 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 21:59:20,669 - werkzeug - INFO -  * Debugger PIN: 745-151-305
+2025-01-14 22:28:02,855 - werkzeug - INFO -  * Detected change in '/home/chaoxue/code/mol_opt/app/test.py', reloading
+2025-01-14 22:28:03,416 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 22:28:06,779 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 22:28:06,779 - werkzeug - INFO -  * Debugger PIN: 745-151-305
+2025-01-14 22:29:27,007 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-14 22:29:27,008 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-14 22:29:27,008 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 22:29:28,817 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 22:29:28,818 - werkzeug - INFO -  * Debugger PIN: 745-151-305
+2025-01-14 22:29:34,485 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:29:34] "GET / HTTP/1.1" 200 -
+2025-01-14 22:29:34,496 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:29:34] "[36mGET /static/js/tmp.js HTTP/1.1[0m" 304 -
+2025-01-14 22:29:39,190 - __main__ - INFO - 收到初始化模型请求
+2025-01-14 22:29:39,190 - __main__ - DEBUG - 请求数据: {'new_key': 'mw', 'conditions': {'mw': 345}}
+2025-01-14 22:29:39,190 - __main__ - INFO - 初始化模型，key: mw, conditions: {'mw': 345}
+2025-01-14 22:29:39,190 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 345}
+2025-01-14 22:29:39,190 - __main__ - DEBUG - 使用配置文件: config/generation_config/mw.yaml
+2025-01-14 22:29:39,190 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-14 22:29:39,192 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/mw.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': 'None', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-14 22:29:39,192 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-14 22:29:39,192 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-14 22:29:41,478 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-14 22:29:41,478 - __main__ - INFO - 模型初始化成功
+2025-01-14 22:29:41,478 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:29:41] "POST /init_model HTTP/1.1" 200 -
+2025-01-14 22:29:45,611 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:29:45] "POST /upload_smi HTTP/1.1" 200 -
+2025-01-14 22:29:45,729 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:29:45,729 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:29:45,729 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:29:45,729 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 6637
+2025-01-14 22:29:45,730 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 6708 183
+2025-01-14 22:29:45,730 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 6903 250
+2025-01-14 22:29:45,730 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 7165 129
+2025-01-14 22:29:45,735 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:29:45,735 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:29:45,735 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:29:45,736 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 8192
+2025-01-14 22:29:45,736 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8667 180
+2025-01-14 22:29:45,736 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8859 259
+2025-01-14 22:29:45,736 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 9130 148
+2025-01-14 22:29:45,742 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:29:45,742 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:29:45,742 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:29:45,742 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 5251
+2025-01-14 22:29:45,743 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 5322 117
+2025-01-14 22:29:45,743 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 5451 192
+2025-01-14 22:29:45,743 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 5655 97
+2025-01-14 22:29:45,748 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:29:45,748 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:29:45,748 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:29:45,748 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 8192
+2025-01-14 22:29:45,749 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 9662 369
+2025-01-14 22:29:45,749 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 10043 479
+2025-01-14 22:29:45,749 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 10534 275
+2025-01-14 22:29:45,754 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:29:45,754 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:29:45,754 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:29:45,754 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 8192
+2025-01-14 22:29:45,755 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 10074 187
+2025-01-14 22:29:45,755 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 10273 256
+2025-01-14 22:29:45,756 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 10541 127
+2025-01-14 22:29:45,761 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:29:45] "POST /process_mol HTTP/1.1" 200 -
+2025-01-14 22:29:48,655 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:29:48] "[33mPOST /select HTTP/1.1[0m" 404 -
+2025-01-14 22:39:00,913 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-14 22:39:00,913 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-14 22:39:00,914 - werkzeug - INFO -  * Restarting with stat
+2025-01-14 22:39:02,782 - werkzeug - WARNING -  * Debugger is active!
+2025-01-14 22:39:02,782 - werkzeug - INFO -  * Debugger PIN: 745-151-305
+2025-01-14 22:39:02,793 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:39:02] "GET / HTTP/1.1" 200 -
+2025-01-14 22:39:02,815 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:39:02] "[36mGET /static/js/tmp.js HTTP/1.1[0m" 304 -
+2025-01-14 22:39:06,837 - __main__ - INFO - 收到初始化模型请求
+2025-01-14 22:39:06,837 - __main__ - DEBUG - 请求数据: {'new_key': 'mw', 'conditions': {'mw': 543}}
+2025-01-14 22:39:06,837 - __main__ - INFO - 初始化模型，key: mw, conditions: {'mw': 543}
+2025-01-14 22:39:06,837 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 543}
+2025-01-14 22:39:06,837 - __main__ - DEBUG - 使用配置文件: config/generation_config/mw.yaml
+2025-01-14 22:39:06,838 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-14 22:39:06,840 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/mw.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': 'None', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-14 22:39:06,840 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-14 22:39:06,840 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-14 22:39:09,134 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-14 22:39:09,134 - __main__ - INFO - 模型初始化成功
+2025-01-14 22:39:09,135 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:39:09] "POST /init_model HTTP/1.1" 200 -
+2025-01-14 22:39:12,030 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:39:12] "POST /upload_smi HTTP/1.1" 200 -
+2025-01-14 22:39:12,083 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:39:12,083 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:39:12,084 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:39:12,084 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 8192
+2025-01-14 22:39:12,084 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 10595 266
+2025-01-14 22:39:12,085 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 10873 353
+2025-01-14 22:39:12,085 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 11238 212
+2025-01-14 22:39:12,092 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:39:12,092 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:39:12,092 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:39:12,092 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 7553
+2025-01-14 22:39:12,093 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 7624 320
+2025-01-14 22:39:12,093 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 7956 414
+2025-01-14 22:39:12,093 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8382 246
+2025-01-14 22:39:12,098 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:39:12,098 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:39:12,098 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:39:12,098 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 3051
+2025-01-14 22:39:12,099 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 3122 96
+2025-01-14 22:39:12,099 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 3230 165
+2025-01-14 22:39:12,099 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 3407 76
+2025-01-14 22:39:12,103 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:39:12,103 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:39:12,103 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:39:12,104 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 8192
+2025-01-14 22:39:12,105 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8778 387
+2025-01-14 22:39:12,105 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 9177 493
+2025-01-14 22:39:12,105 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 9682 281
+2025-01-14 22:39:12,110 - PIL.PngImagePlugin - DEBUG - STREAM b'IHDR' 16 13
+2025-01-14 22:39:12,111 - PIL.PngImagePlugin - DEBUG - STREAM b'bKGD' 41 6
+2025-01-14 22:39:12,111 - PIL.PngImagePlugin - DEBUG - b'bKGD' 41 6 (unknown)
+2025-01-14 22:39:12,111 - PIL.PngImagePlugin - DEBUG - STREAM b'IDAT' 59 7769
+2025-01-14 22:39:12,112 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 7840 172
+2025-01-14 22:39:12,112 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8024 242
+2025-01-14 22:39:12,112 - PIL.PngImagePlugin - DEBUG - STREAM b'zTXt' 8278 130
+2025-01-14 22:39:12,118 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:39:12] "POST /process_mol HTTP/1.1" 200 -
+2025-01-14 22:39:14,022 - __main__ - INFO - 收到 select 请求
+2025-01-14 22:39:14,023 - __main__ - DEBUG - 请求数据: ImmutableMultiDict([('selected_idx', '3')])
+2025-01-14 22:39:14,023 - __main__ - DEBUG - 选中的索引: 3
+2025-01-14 22:39:14,023 - __main__ - DEBUG - 当前session中的结果: []
+2025-01-14 22:39:14,023 - __main__ - ERROR - 没有可用的结果
+2025-01-14 22:39:14,023 - werkzeug - INFO - 127.0.0.1 - - [14/Jan/2025 22:39:14] "[33mPOST /select HTTP/1.1[0m" 404 -

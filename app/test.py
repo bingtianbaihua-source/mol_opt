@@ -210,7 +210,10 @@ class ModelManager:
                 if len(step_res) >= 5:
                     return step_res
                 
-        return step_res
+        # return ADDITION, step_res
+        if len(step_res) == 0:
+            return FAIL, None
+        return ADDITION, step_res
     
     def get_model(self):
         return self.generator
@@ -303,27 +306,12 @@ def init_model():
             'message': f'模型初始化失败: {str(e)}'
         }), 500
 
-# 处理SMI文件上传和验证
-@app.route('/upload_smi', methods=['POST'])
-def upload_smi():
+# 1. 将 upload_smi 的核心逻辑抽取为独立函数
+def process_molecule(mol):
+    """处理分子对象,生成图像和序列化数据"""
     try:
-        # 获取用户输入的SMILES
-        smiles = request.form.get('smiles', '').strip()
-        
-        if not smiles:
-            return jsonify({
-                'status': 'error',
-                'message': 'SMILES不能为空'
-            }), 400
-            
-        # 将SMILES转换为mol对象
-        mol = Chem.MolFromSmiles(smiles)
-        
         if mol is None:
-            return jsonify({
-                'status': 'error',
-                'message': '无效的SMILES字符串'
-            }), 400
+            raise ValueError('无效的分子结构')
             
         # 生成带有原子索引的分子图像
         img_str = draw_molecule_with_atom_indices(mol)
@@ -332,17 +320,43 @@ def upload_smi():
         mol_pkl = pickle.dumps(mol)
         mol_b64 = base64.b64encode(mol_pkl).decode()
         
-        return jsonify({
+        return {
             'status': 'success',
-            'message': 'SMILES解析成功',
+            'message': '分子结构处理成功',
             'image': img_str,
             'mol': mol_b64
-        })
+        }
+        
+    except Exception as e:
+        raise ValueError(f'处理分子结构时发生错误: {str(e)}')
+
+# 2. 修改 upload_smi 路由使用这个函数
+@app.route('/upload_smi', methods=['POST'])
+def upload_smi():
+    try:
+        # 检查输入类型
+        if 'mol_obj' in request.form:
+            # 处理mol对象
+            mol_b64 = request.form.get('mol_obj')
+            mol_pkl = base64.b64decode(mol_b64)
+            mol = pickle.loads(mol_pkl)
+        else:
+            # 处理SMILES字符串
+            smiles = request.form.get('smiles', '').strip()
+            if not smiles:
+                return jsonify({
+                    'status': 'error',
+                    'message': 'SMILES不能为空'
+                }), 400
+            mol = Chem.MolFromSmiles(smiles)
+            
+        result = process_molecule(mol)
+        return jsonify(result)
         
     except Exception as e:
         return jsonify({
             'status': 'error',
-            'message': f'处理SMILES时发生错误: {str(e)}'
+            'message': str(e)
         }), 500
 
 # 处理mol对象和条件的组合
@@ -462,13 +476,20 @@ def display_results():
 @app.route('/select', methods=['POST'])
 def select():
     try:
+        # 添加详细的日志记录
+        logger.info("收到 select 请求")
+        logger.debug(f"请求数据: {request.form}")
+        
         # 获取用户选择的索引
         selected_idx = int(request.form.get('selected_idx'))
+        logger.debug(f"选中的索引: {selected_idx}")
         
         # 从session获取结果
         results = session.get('current_results', [])
+        logger.debug(f"当前session中的结果: {results}")
         
         if not results:
+            logger.error("没有可用的结果")
             return jsonify({
                 'status': 'error',
                 'message': '没有可用的结果'
@@ -480,7 +501,10 @@ def select():
             None
         )
         
+        logger.debug(f"选中的结果: {selected_result}")
+        
         if selected_result is None:
+            logger.error(f"未找到索引 {selected_idx} 对应的结果")
             return jsonify({
                 'status': 'error',
                 'message': '无效的选择'
@@ -489,27 +513,94 @@ def select():
         # 存储选择结果到session
         session['selected_result'] = selected_result
         
-        # 重定向到process_p进行处理
+        # 重定向到process_compose进行处理
         return jsonify({
             'status': 'success',
             'selected': selected_result,
-            'redirect': url_for('process_p')
+            'redirect': url_for('process_compose')
         })
         
     except Exception as e:
+        logger.error(f"select 处理错误: {str(e)}")
+        logger.error(f"错误堆栈: {traceback.format_exc()}")
         return jsonify({
             'status': 'error',
             'message': f'处理选择时发生错误: {str(e)}'
         }), 500
 
 # 方法p的处理
-@app.route('/process_p', methods=['POST'])
-def process_p():
-    # 输入：选中的分子信息
-    # 输出：
-    #   - 如果返回mol对象：重定向到process_mol（开始新循环）
-    #   - 如果返回None：重定向到display_results（显示终止消息）
-    pass
+@app.route('/process_compose', methods=['POST'])
+def process_compose():
+    try:
+        # 从session获取选中的结果
+        selected_result = session.get('selected_result')
+        
+        if not selected_result:
+            return jsonify({
+                'status': 'error',
+                'message': '没有选中的分子'
+            }), 400
+            
+        # 获取mol对象
+        mol_b64 = selected_result.get('mol')
+        mol_pkl = base64.b64decode(mol_b64)
+        mol = pickle.loads(mol_pkl)
+        
+        # 获取当前的conditions
+        conditions = session.get('conditions')
+        
+        # 调用模型的generate方法继续生成
+        try:
+            results = model_manager.generate(mol, conditions)
+            
+            if not results:  # 如果返回空列表，说明生成终止
+                return jsonify({
+                    'status': 'success',
+                    'signal': False,
+                    'message': '分子生成完成'
+                })
+            
+            # 处理结果列表
+            processed_results = []
+            for idx, ele in enumerate(results):
+                mol, prob, atom_idx = ele
+                img = Draw.MolToImage(mol)
+                buffered = io.BytesIO()
+                img.save(buffered, format="PNG")
+                img_str = base64.b64encode(buffered.getvalue()).decode()
+                
+                mol_pkl = pickle.dumps(mol)
+                mol_b64 = base64.b64encode(mol_pkl).decode()
+                
+                processed_results.append({
+                    'mol': mol_b64,
+                    'probability': float(prob),
+                    'index': atom_idx,
+                    'image': f'data:image/png;base64,{img_str}'
+                })
+            
+            # 存储新的结果到session
+            session['current_results'] = processed_results
+            
+            return jsonify({
+                'status': 'success',
+                'signal': True,
+                'results': processed_results
+            })
+            
+        except Exception as e:
+            print(f"Generation error: {str(e)}")
+            return jsonify({
+                'status': 'error',
+                'message': f'分子生成过程出错: {str(e)}'
+            }), 500
+            
+    except Exception as e:
+        print(f"Process error: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f'处理过程中发生错误: {str(e)}'
+        }), 500
 
 # 工具函数：将mol对象转换为图片
 def mol_to_img(mol, size=(300, 300), highlight_atoms=None, legend=""):
@@ -556,55 +647,6 @@ def mol_to_img(mol, size=(300, 300), highlight_atoms=None, legend=""):
     except Exception as e:
         print(f"生成分子图像时发生错误: {str(e)}")
         return None
-
-@app.route('/process_compose', methods=['POST'])
-def process_compose():
-    try:
-        # 从session获取选中的结果
-        selected_result = session.get('selected_result')
-        
-        if not selected_result:
-            return jsonify({
-                'status': 'error',
-                'message': '没有选中的分子'
-            }), 400
-            
-        # 获取mol对象
-        mol_b64 = selected_result.get('mol')
-        mol_pkl = base64.b64decode(mol_b64)
-        mol = pickle.loads(mol_pkl)
-        
-        # 这里是具体的处理逻辑
-        # signal, processed_mol = your_processing_function(mol)
-        signal = True
-        processed_mol = None
-        
-        if signal:
-            # 如果signal为True，准备进入下一轮循环
-            # 将新的mol对象序列化
-            new_mol_pkl = pickle.dumps(processed_mol)
-            new_mol_b64 = base64.b64encode(new_mol_pkl).decode()
-            
-            return jsonify({
-                'status': 'success',
-                'signal': True,
-                'mol': new_mol_b64,
-                'redirect': url_for('process_mol')
-            })
-        else:
-            # 如果signal为False，返回终止消息
-            return jsonify({
-                'status': 'success',
-                'signal': False,
-                'message': '合成路径已完成',
-                'redirect': url_for('display_results')
-            })
-            
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': f'处理过程中发生错误: {str(e)}'
-        }), 500
 
 def draw_molecule_with_atom_indices(mol):
     """
