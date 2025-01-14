@@ -1,0 +1,3 @@
+data/ZINC/100000_data/data.pkl
+data/ZINC/data.pkl
+data/ZINC/50000_data/data.pkl
