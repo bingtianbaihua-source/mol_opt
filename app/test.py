@@ -489,7 +489,7 @@ def select():
         logger.info(f"当前session内容: {dict(session)}")
         
         # 获取用户选择的索引
-        selected_idx = int(request.form.get('selected_idx'))
+        selected_idx = int(request.form.get('selected_result'))
         logger.info(f"用户选择的索引: {selected_idx}")
         
         # 从session获取精简结果
