@@ -171,9 +171,9 @@ class ModelManager:
         # Sampling building blocks
         prob_dist_block = self.generator.get_prob_dist_block(core_mol, Z_core)
         sampled_indices = torch.multinomial(prob_dist_block, 10, replacement=False)
-        print(sampled_indices)
+        # print(sampled_indices)
         sampled_probs = prob_dist_block[sampled_indices]
-        print(sampled_probs)
+        # print(sampled_probs)
 
         step_res = []
         for idx,prob in zip(sampled_indices, sampled_probs):
@@ -368,6 +368,8 @@ def process_mol():
         conditions = data.get('conditions')
         mol_b64 = data.get('scaffold_mol')
         
+        logger.info(f"Process_mol received data: {data}")
+        
         # 验证输入
         if not conditions or not mol_b64:
             return jsonify({
@@ -378,25 +380,19 @@ def process_mol():
         # 反序列化mol对象
         mol_pkl = base64.b64decode(mol_b64)
         scaffold_mol = pickle.loads(mol_pkl)
-        
-        # # 获取模型实例
-        # model = model_manager.get_model()
-        # if model is None:
-        #     return jsonify({
-        #         'status': 'error',
-        #         'message': '模型未初始化'
-        #     }), 400
             
         # 调用模型的generate方法
         try:
             results = model_manager.generate(scaffold_mol, conditions)
-            print(results)
+            logger.info(f"Generate results: {results}")
             
             # 处理结果列表
-            processed_results = []
-            for idx,ele in enumerate(results):
+            processed_results = []  # 用于API返回的完整结果
+            session_results = []    # 用于存储在session中的精简数据
+            
+            for idx, ele in enumerate(results):
+                mol, prob, atom_idx = ele
                 # 生成分子图像
-                mol,prob,atom_idx = ele
                 img = Draw.MolToImage(mol)
                 buffered = io.BytesIO()
                 img.save(buffered, format="PNG")
@@ -406,15 +402,24 @@ def process_mol():
                 mol_pkl = pickle.dumps(mol)
                 mol_b64 = base64.b64encode(mol_pkl).decode()
                 
+                # 完整结果（包含图像）
                 processed_results.append({
                     'mol': mol_b64,
                     'probability': float(prob),
                     'index': atom_idx,
                     'image': f'data:image/png;base64,{img_str}'
                 })
+                
+                # 精简结果（不包含图像）
+                session_results.append({
+                    'mol': mol_b64,
+                    'probability': float(prob),
+                    'index': atom_idx
+                })
             
-            # 存储结果到session（如果需要）
-            session['current_results'] = processed_results
+            # 存储精简结果到session
+            session['current_results'] = session_results
+            logger.info(f"Stored {len(session_results)} results in session")
             
             return jsonify({
                 'status': 'success',
@@ -422,12 +427,16 @@ def process_mol():
             })
             
         except Exception as e:
+            logger.error(f"Generation error: {str(e)}")
+            logger.error(f"Error traceback: {traceback.format_exc()}")
             return jsonify({
                 'status': 'error',
                 'message': f'生成过程出错: {str(e)}'
             }), 500
             
     except Exception as e:
+        logger.error(f"Process error: {str(e)}")
+        logger.error(f"Error traceback: {traceback.format_exc()}")
         return jsonify({
             'status': 'error',
             'message': f'处理请求时发生错误: {str(e)}'
@@ -476,71 +485,34 @@ def display_results():
 @app.route('/select', methods=['POST'])
 def select():
     try:
-        # 添加详细的日志记录
         logger.info("收到 select 请求")
-        logger.debug(f"请求数据: {request.form}")
+        logger.info(f"当前session内容: {dict(session)}")
         
         # 获取用户选择的索引
         selected_idx = int(request.form.get('selected_idx'))
-        logger.debug(f"选中的索引: {selected_idx}")
+        logger.info(f"用户选择的索引: {selected_idx}")
         
-        # 从session获取结果
+        # 从session获取精简结果
         results = session.get('current_results', [])
-        logger.debug(f"当前session中的结果: {results}")
+        logger.info(f"从session获取到 {len(results)} 个结果")
         
-        if not results:
-            logger.error("没有可用的结果")
-            return jsonify({
-                'status': 'error',
-                'message': '没有可用的结果'
-            }), 404
-            
-        # 查找选中的结果
-        selected_result = next(
-            (r for r in results if r['index'] == selected_idx),
+        # 找到选择的结果在列表中的位置
+        result_index = next(
+            (index for index, r in enumerate(results) if r['index'] == selected_idx),
             None
         )
         
-        logger.debug(f"选中的结果: {selected_result}")
+        logger.info(f"选择的结果在列表中的索引位置: {result_index}")
         
-        if selected_result is None:
+        if result_index is None:
             logger.error(f"未找到索引 {selected_idx} 对应的结果")
             return jsonify({
                 'status': 'error',
                 'message': '无效的选择'
             }), 400
             
-        # 存储选择结果到session
-        session['selected_result'] = selected_result
+        selected_result = results[result_index]
         
-        # 重定向到process_compose进行处理
-        return jsonify({
-            'status': 'success',
-            'selected': selected_result,
-            'redirect': url_for('process_compose')
-        })
-        
-    except Exception as e:
-        logger.error(f"select 处理错误: {str(e)}")
-        logger.error(f"错误堆栈: {traceback.format_exc()}")
-        return jsonify({
-            'status': 'error',
-            'message': f'处理选择时发生错误: {str(e)}'
-        }), 500
-
-# 方法p的处理
-@app.route('/process_compose', methods=['POST'])
-def process_compose():
-    try:
-        # 从session获取选中的结果
-        selected_result = session.get('selected_result')
-        
-        if not selected_result:
-            return jsonify({
-                'status': 'error',
-                'message': '没有选中的分子'
-            }), 400
-            
         # 获取mol对象
         mol_b64 = selected_result.get('mol')
         mol_pkl = base64.b64decode(mol_b64)
@@ -560,27 +532,40 @@ def process_compose():
                     'message': '分子生成完成'
                 })
             
-            # 处理结果列表
-            processed_results = []
+            # 处理新的结果列表
+            processed_results = []  # 用于API返回的完整结果
+            session_results = []    # 用于存储在session中的精简数据
+            
             for idx, ele in enumerate(results):
                 mol, prob, atom_idx = ele
+                # 生成分子图像
                 img = Draw.MolToImage(mol)
                 buffered = io.BytesIO()
                 img.save(buffered, format="PNG")
                 img_str = base64.b64encode(buffered.getvalue()).decode()
                 
+                # 序列化mol对象
                 mol_pkl = pickle.dumps(mol)
                 mol_b64 = base64.b64encode(mol_pkl).decode()
                 
+                # 完整结果（包含图像）
                 processed_results.append({
                     'mol': mol_b64,
                     'probability': float(prob),
                     'index': atom_idx,
                     'image': f'data:image/png;base64,{img_str}'
                 })
+                
+                # 精简结果（不包含图像）
+                session_results.append({
+                    'mol': mol_b64,
+                    'probability': float(prob),
+                    'index': atom_idx
+                })
             
             # 存储新的结果到session
-            session['current_results'] = processed_results
+            session['current_results'] = session_results
+            logger.info(f"存储了 {len(session_results)} 个新结果到session")
             
             return jsonify({
                 'status': 'success',
@@ -589,14 +574,35 @@ def process_compose():
             })
             
         except Exception as e:
-            print(f"Generation error: {str(e)}")
+            logger.error(f"Generation error: {str(e)}")
+            logger.error(f"Error traceback: {traceback.format_exc()}")
             return jsonify({
                 'status': 'error',
                 'message': f'分子生成过程出错: {str(e)}'
             }), 500
             
     except Exception as e:
-        print(f"Process error: {str(e)}")
+        logger.error(f"select 处理错误: {str(e)}")
+        logger.error(f"错误堆栈: {traceback.format_exc()}")
+        return jsonify({
+            'status': 'error',
+            'message': f'处理选择时发生错误: {str(e)}'
+        }), 500
+
+# 方法p的处理
+@app.route('/process_compose', methods=['POST'])
+def process_compose():
+    try:
+        logger.info("收到 process_compose 请求")
+        logger.info(f"当前session内容: {dict(session)}")
+        
+        # 从session获取选中的索引
+        selected_result = session.get('selected_result')
+        
+            
+    except Exception as e:
+        logger.error(f"Process error: {str(e)}")
+        logger.error(f"Error traceback: {traceback.format_exc()}")
         return jsonify({
             'status': 'error',
             'message': f'处理过程中发生错误: {str(e)}'
