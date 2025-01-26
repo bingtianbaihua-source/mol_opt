@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ name }}'s Watchlist</title>
+    <link rel="icon" href="{{ url_for('static', filename='giphy.gif') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+</head>
+<body>
+    {% for message in get_flashed_messages() %}
+    <div class="alert">{{ message }}</div>
+    {% endfor %}
+
+    <div class="center-box">
+        <div class="image-box">
+            <img src="{{ scaffold_img }}" alt="Image">
+        </div>
+    </div>
+
+    <div class="process-res-list"></div>
+        {% for select_idx, img_b64, prob, idx in process_res %}
+        <div class="process-res-item">
+            <img src="{{ img_b64 }}" alt="Processed Image">
+            <p>Probability: {{ prob }}</p>
+            <p>Index: {{ idx }}</p>
+            <form action="{{ url_for('process_compose') }}" method="post">
+                <input type="hidden" name="select_idx" value="{{ select_idx }}">
+                <button type="submit">Select</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}">
+    <footer>
+        <small>&copy; 2018 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+    </footer>
+</body>
+</html>
