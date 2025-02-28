@@ -1,0 +1,8 @@
+model_path: /Users/mac/Downloads/code/project/mol_opt/weight/hERG-BBBP.tar
+library_path: ./data/ZINC/library.csv
+library_builtin_model_path: None
+
+# Required
+window_size: 2000
+alpha: 0.75
+max_iteration: 10

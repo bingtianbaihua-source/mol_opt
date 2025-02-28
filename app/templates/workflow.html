@@ -22,13 +22,24 @@
         <div class="process-res-item">
             <img src="{{ img_b64 }}" alt="Processed Image">
             <p>Probability: {{ prob }}</p>
-            <p>Index: {{ idx }}</p>
+
             <form action="{{ url_for('process_compose') }}" method="post">
+                <p>
+                    Index: 
+                    <input type="text" name="index" value="{{ idx }}">
+                </p>
                 <input type="hidden" name="select_idx" value="{{ select_idx }}">
                 <button type="submit">Select</button>
             </form>
         </div>
         {% endfor %}
+        <div class="process-res-item">
+            <form action="{{ url_for('process_compose') }}" method="post">
+                <label>Custom Index <input type="number" name="index" autocomplete="off"></label>
+                <label>Custom Build block <input type="text" name="custom_smi" autocomplete="off"></label>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
 
 

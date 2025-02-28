@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -21,9 +21,16 @@
         TPSA <input type="number" name="tpsa" autocomplete="off">
         LogP <input type="number" name="logp" autocomplete="off">
         QED <input type="number" name="qed" autocomplete="off">
+        hERG <input type="number" name="hERG" autocomplete="off">
+        SlogP <input type="number" name="slogp" autocomplete="off">
 
         <input class="btn" type="submit" name="submit" value="Add">
     </form>
+
+    <form method="post" action="{{ url_for('case_study') }}">
+        <input class="btn" type="submit" name="submit" value="Case">
+    </form>
+    
     <form method="post" action="{{ url_for('process_mol') }}">
         Input smiles <input type="text" name="scaffold_smi" autocomplete="off" required>
         <input class="btn" type="submit" name="submit" value="Add">
@@ -32,5 +39,147 @@
     <footer>
         <small>&copy; 2018 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
     </footer>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }}'s Watchlist</title>
+    <link rel="icon" href="{{ url_for('static', filename='giphy.gif') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* 页面布局 */
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .left-section {
+            width: 50%;
+            padding: 20px;
+            background-color: #f0f0f5;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .right-section {
+            width: 50%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            border-left: 2px solid #e0e0e0;
+        }
+
+        .box {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .box-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        input[type="number"], input[type="text"] {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            background-color: #007aff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #005bbb;
+        }
+
+        img.placeholder {
+            width: 80%;
+            max-width: 400px;
+            border: 2px dashed #aaa;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.8rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧布局 -->
+        <div class="left-section">
+            <!-- 模型初始化 -->
+            <div class="box">
+                <div class="box-title">Step 1: Model Initialize</div>
+                <div class="grid-layout">
+                    <label>MW <input type="number" name="mw" autocomplete="off"></label>
+                    <label>TPSA <input type="number" name="tpsa" autocomplete="off"></label>
+                    <label>LogP <input type="number" name="logp" autocomplete="off"></label>
+                    <label>QED <input type="number" name="qed" autocomplete="off"></label>
+                    <label>hERG <input type="number" name="hERG" autocomplete="off"></label>
+                </div>
+            </div>
+
+            <!-- 输入 scaffold -->
+            <div class="box">
+                <div class="box-title">Step 2: Input scaffold</div>
+                <form method="post" action="{{ url_for('process_mol') }}">
+                    <label>Input smiles <input type="text" name="scaffold_smi" autocomplete="off" required></label>
+                    <input class="btn" type="submit" name="submit" value="Add">
+                </form>
+            </div>
+
+            <!-- 案例研究 -->
+            <div class="box">
+                <div class="box-title">Case Study</div>
+                <form method="post" action="{{ url_for('case_study') }}">
+                    <input class="btn" type="submit" name="submit" value="Case">
+                </form>
+            </div>
+        </div>
+
+        <!-- 右侧布局 -->
+        <div class="right-section">
+            <img class="placeholder" alt="Placeholder for image" src="{{ url_for('static', filename='images/abstract.png') }}">
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,8 @@
+model_path: /home/chaoxue/code/mol_opt/weight/logp.tar
+library_path: ./data/ZINC/library.csv
+library_builtin_model_path: /Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar
+
+# Required
+window_size: 2000
+alpha: 0.75
+max_iteration: 10

@@ -10224,3 +10224,1151 @@ Exception: 生成器未初始化
 2025-01-26 11:24:07,500 - werkzeug - INFO - 127.0.0.1 - - [26/Jan/2025 11:24:07] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
 2025-01-26 11:24:07,523 - werkzeug - INFO - 127.0.0.1 - - [26/Jan/2025 11:24:07] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=yel1Bu38fUHrS6TImgXP HTTP/1.1" 200 -
 2025-01-26 11:24:07,548 - werkzeug - INFO - 127.0.0.1 - - [26/Jan/2025 11:24:07] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-01-30 20:53:40,560 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-30 20:53:40,561 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-30 20:53:40,565 - werkzeug - INFO -  * Restarting with stat
+2025-01-30 20:53:51,685 - werkzeug - WARNING -  * Debugger is active!
+2025-01-30 20:53:51,712 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-01-30 20:53:51,954 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:53:51] "GET / HTTP/1.1" 200 -
+2025-01-30 20:53:52,034 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:53:52] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 20:53:52,061 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:53:52] "GET /static/images/giphy.gif HTTP/1.1" 200 -
+2025-01-30 20:53:52,062 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:53:52] "GET /static/style.css HTTP/1.1" 200 -
+2025-01-30 20:54:10,276 - __main__ - INFO - model init: hERG_slogp
+2025-01-30 20:54:10,276 - __main__ - INFO - 开始初始化模型，key: hERG_slogp, conditions: {'hERG': 1.0, 'slogp': 4.0}
+2025-01-30 20:54:10,276 - __main__ - DEBUG - 使用配置文件: config/generation_config/hERG_BBBP.yaml
+2025-01-30 20:54:10,278 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 20:54:10,288 - __main__ - DEBUG - 加载配置: {'model_path': '/Users/mac/Downloads/code/project/mol_opt/weight/hERG-BBBP.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': './test/builtin_model/hERG-BBBP.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 20:54:10,291 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 20:54:10,291 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 20:55:58,123 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 146, in generate
+    raise Exception("生成器未初始化")
+Exception: 生成器未初始化
+
+2025-01-30 20:55:58,319 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:55:58] "[35m[1mPOST /process HTTP/1.1[0m" 500 -
+2025-01-30 20:55:58,399 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:55:58] "[36mGET /process?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-01-30 20:55:58,436 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:55:58] "[36mGET /process?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-01-30 20:55:58,546 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:55:58] "GET /process?__debugger__=yes&cmd=resource&f=console.png&s=0GIzLeUAGAlVVSpmffdN HTTP/1.1" 200 -
+2025-01-30 20:55:58,585 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:55:58] "[36mGET /process?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-01-30 20:56:00,072 - root - INFO - Create Local File (./test/builtin_model/hERG-BBBP.tar)
+2025-01-30 20:56:00,134 - __main__ - ERROR - 初始化生成器时发生错误: Parent directory ./test/builtin_model does not exist.
+2025-01-30 20:56:00,139 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 121, in initialize
+    self.generator = MoleculeBuilder(generator_cfg)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator.py", line 62, in __init__
+    self.save_builtin_model(library_builtin_model_path)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator.py", line 263, in save_builtin_model
+    torch.save({
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 628, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 502, in _open_zipfile_writer
+    return container(name_or_buffer)
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 473, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+RuntimeError: Parent directory ./test/builtin_model does not exist.
+
+2025-01-30 20:56:00,139 - __main__ - ERROR - 初始化模型时发生错误: Parent directory ./test/builtin_model does not exist.
+2025-01-30 20:56:00,144 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 121, in initialize
+    self.generator = MoleculeBuilder(generator_cfg)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator.py", line 62, in __init__
+    self.save_builtin_model(library_builtin_model_path)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator.py", line 263, in save_builtin_model
+    torch.save({
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 628, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 502, in _open_zipfile_writer
+    return container(name_or_buffer)
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 473, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+RuntimeError: Parent directory ./test/builtin_model does not exist.
+
+2025-01-30 20:56:01,632 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:56:01] "POST / HTTP/1.1" 200 -
+2025-01-30 20:57:52,415 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:57:52] "GET / HTTP/1.1" 200 -
+2025-01-30 20:57:52,463 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:57:52] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 20:57:52,471 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:57:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 20:57:52,473 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:57:52] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 20:57:56,970 - __main__ - INFO - model init: mw
+2025-01-30 20:57:56,970 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 454.0}
+2025-01-30 20:57:56,971 - __main__ - DEBUG - 使用配置文件: config/generation_config/mw.yaml
+2025-01-30 20:57:56,984 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 20:57:56,993 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/mw.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': 'None', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 20:57:56,993 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 20:57:56,994 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 20:58:03,687 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-30 20:58:03,688 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:03] "POST / HTTP/1.1" 200 -
+2025-01-30 20:58:03,718 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:03] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 20:58:03,726 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 20:58:03,729 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:03] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 20:58:14,836 - __main__ - INFO - model init: mw
+2025-01-30 20:58:14,836 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 454.0}
+2025-01-30 20:58:14,837 - __main__ - DEBUG - 使用配置文件: config/generation_config/mw.yaml
+2025-01-30 20:58:14,840 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 20:58:14,846 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/mw.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': 'None', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 20:58:14,847 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 20:58:14,847 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 20:58:26,314 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-30 20:58:26,316 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:26] "POST / HTTP/1.1" 200 -
+2025-01-30 20:58:51,184 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:51] "GET / HTTP/1.1" 200 -
+2025-01-30 20:58:51,338 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:51] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 20:58:51,345 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 20:58:51,346 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 20:58:51] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 20:59:00,448 - __main__ - INFO - model init: hERG_slogp
+2025-01-30 20:59:00,448 - __main__ - INFO - 开始初始化模型，key: hERG_slogp, conditions: {'hERG': 1.0, 'slogp': 4.0}
+2025-01-30 20:59:00,448 - __main__ - DEBUG - 使用配置文件: config/generation_config/hERG_BBBP.yaml
+2025-01-30 20:59:00,449 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 20:59:00,454 - __main__ - DEBUG - 加载配置: {'model_path': '/Users/mac/Downloads/code/project/mol_opt/weight/hERG-BBBP.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': './test/builtin_model/hERG-BBBP.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 20:59:00,454 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 20:59:00,454 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 21:00:11,565 - root - INFO - Create Local File (./test/builtin_model/hERG-BBBP.tar)
+2025-01-30 21:00:11,579 - __main__ - ERROR - 初始化生成器时发生错误: Parent directory ./test/builtin_model does not exist.
+2025-01-30 21:00:11,598 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 121, in initialize
+    self.generator = MoleculeBuilder(generator_cfg)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator.py", line 62, in __init__
+    self.save_builtin_model(library_builtin_model_path)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator.py", line 263, in save_builtin_model
+    torch.save({
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 628, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 502, in _open_zipfile_writer
+    return container(name_or_buffer)
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 473, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+RuntimeError: Parent directory ./test/builtin_model does not exist.
+
+2025-01-30 21:00:11,598 - __main__ - ERROR - 初始化模型时发生错误: Parent directory ./test/builtin_model does not exist.
+2025-01-30 21:00:11,598 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 121, in initialize
+    self.generator = MoleculeBuilder(generator_cfg)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator.py", line 62, in __init__
+    self.save_builtin_model(library_builtin_model_path)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator.py", line 263, in save_builtin_model
+    torch.save({
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 628, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 502, in _open_zipfile_writer
+    return container(name_or_buffer)
+  File "/Users/mac/miniconda3/lib/python3.10/site-packages/torch/serialization.py", line 473, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+RuntimeError: Parent directory ./test/builtin_model does not exist.
+
+2025-01-30 21:00:12,304 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:00:12] "POST / HTTP/1.1" 200 -
+2025-01-30 21:00:12,376 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:00:12] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:00:12,409 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:00:12] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 21:00:12,433 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:00:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:00:32,612 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 154, in generate
+    stand_cond = self.generator.model.standardize_property(use_conditions)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/model/network.py", line 53, in standardize_property
+    assert property.keys() == self.property_keys, \
+AssertionError: Input Keys is not valid
+	Input:      {'hERG', 'slogp'}
+	Required:   {'mw'}
+
+2025-01-30 21:00:32,632 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:00:32] "[35m[1mPOST /process HTTP/1.1[0m" 500 -
+2025-01-30 21:00:32,676 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:00:32] "[36mGET /process?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-01-30 21:00:32,677 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:00:32] "[36mGET /process?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:00:32,718 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:00:32] "[36mGET /process?__debugger__=yes&cmd=resource&f=console.png&s=0GIzLeUAGAlVVSpmffdN HTTP/1.1[0m" 304 -
+2025-01-30 21:01:50,185 - __main__ - INFO - model init: hERG_slogp
+2025-01-30 21:01:50,186 - __main__ - INFO - 开始初始化模型，key: hERG_slogp, conditions: {'hERG': 1.0, 'slogp': 4.0}
+2025-01-30 21:01:50,186 - __main__ - DEBUG - 使用配置文件: config/generation_config/hERG_BBBP.yaml
+2025-01-30 21:01:50,188 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 21:01:50,194 - __main__ - DEBUG - 加载配置: {'model_path': '/Users/mac/Downloads/code/project/mol_opt/weight/hERG-BBBP.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': './builtin_model/hERG-BBBP.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 21:01:50,194 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 21:01:50,195 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 21:01:56,099 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-30 21:01:56,099 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:01:56] "POST / HTTP/1.1" 200 -
+2025-01-30 21:02:04,322 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:04] "GET / HTTP/1.1" 200 -
+2025-01-30 21:02:04,403 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:04] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:02:04,435 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:02:04,459 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:04] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 21:02:12,116 - __main__ - INFO - model init: hERG_slogp
+2025-01-30 21:02:12,116 - __main__ - INFO - 开始初始化模型，key: hERG_slogp, conditions: {'hERG': 1.0, 'slogp': 4.0}
+2025-01-30 21:02:12,116 - __main__ - DEBUG - 使用配置文件: config/generation_config/hERG_BBBP.yaml
+2025-01-30 21:02:12,117 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 21:02:12,136 - __main__ - DEBUG - 加载配置: {'model_path': '/Users/mac/Downloads/code/project/mol_opt/weight/hERG-BBBP.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': './builtin_model/hERG-BBBP.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 21:02:12,136 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 21:02:12,136 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 21:02:17,871 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-30 21:02:17,873 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:17] "POST / HTTP/1.1" 200 -
+2025-01-30 21:02:17,898 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:02:17,900 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:17] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:02:17,908 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:17] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 21:02:30,254 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 154, in generate
+    stand_cond = self.generator.model.standardize_property(use_conditions)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/model/network.py", line 53, in standardize_property
+    assert property.keys() == self.property_keys, \
+AssertionError: Input Keys is not valid
+	Input:      {'hERG', 'slogp'}
+	Required:   {'hERG_at_10uM', 'SlogP'}
+
+2025-01-30 21:02:30,263 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:30] "[35m[1mPOST /process HTTP/1.1[0m" 500 -
+2025-01-30 21:02:30,293 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:30] "[36mGET /process?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:02:30,298 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:30] "[36mGET /process?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-01-30 21:02:30,337 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:02:30] "[36mGET /process?__debugger__=yes&cmd=resource&f=console.png&s=0GIzLeUAGAlVVSpmffdN HTTP/1.1[0m" 304 -
+2025-01-30 21:03:26,557 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:26] "GET / HTTP/1.1" 200 -
+2025-01-30 21:03:26,665 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:03:26,685 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:26] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:03:26,689 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:26] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 21:03:34,090 - __main__ - INFO - model init: hERG_slogp
+2025-01-30 21:03:34,090 - __main__ - INFO - 开始初始化模型，key: hERG_slogp, conditions: {'hERG': 1.0, 'slogp': 4.0}
+2025-01-30 21:03:34,090 - __main__ - DEBUG - 使用配置文件: config/generation_config/hERG_BBBP.yaml
+2025-01-30 21:03:34,091 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 21:03:34,095 - __main__ - DEBUG - 加载配置: {'model_path': '/Users/mac/Downloads/code/project/mol_opt/weight/hERG-BBBP.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': 'None', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 21:03:34,095 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 21:03:34,096 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 21:03:41,163 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-30 21:03:41,164 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:41] "POST / HTTP/1.1" 200 -
+2025-01-30 21:03:41,189 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:03:41,193 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:41] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:03:41,214 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:41] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 21:03:46,009 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 154, in generate
+    stand_cond = self.generator.model.standardize_property(use_conditions)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/model/network.py", line 53, in standardize_property
+    assert property.keys() == self.property_keys, \
+AssertionError: Input Keys is not valid
+	Input:      {'hERG', 'slogp'}
+	Required:   {'mw'}
+
+2025-01-30 21:03:46,015 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:46] "[35m[1mPOST /process HTTP/1.1[0m" 500 -
+2025-01-30 21:03:46,044 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:46] "[36mGET /process?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:03:46,053 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:46] "[36mGET /process?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-01-30 21:03:46,094 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:03:46] "[36mGET /process?__debugger__=yes&cmd=resource&f=console.png&s=0GIzLeUAGAlVVSpmffdN HTTP/1.1[0m" 304 -
+2025-01-30 21:05:00,492 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:00] "GET / HTTP/1.1" 200 -
+2025-01-30 21:05:00,534 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:05:00,536 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:00] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:05:00,555 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:00] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 21:05:08,066 - __main__ - INFO - model init: hERG_slogp
+2025-01-30 21:05:08,066 - __main__ - INFO - 开始初始化模型，key: hERG_slogp, conditions: {'hERG': 5.0, 'slogp': 10.0}
+2025-01-30 21:05:08,067 - __main__ - DEBUG - 使用配置文件: config/generation_config/hERG_BBBP.yaml
+2025-01-30 21:05:08,069 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 21:05:08,073 - __main__ - DEBUG - 加载配置: {'model_path': '/Users/mac/Downloads/code/project/mol_opt/weight/hERG-BBBP.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': 'None', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 21:05:08,073 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 21:05:08,074 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 21:05:16,045 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-30 21:05:16,047 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:16] "POST / HTTP/1.1" 200 -
+2025-01-30 21:05:16,079 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:16] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:05:16,083 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:05:16,098 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:16] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 21:05:20,450 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 154, in generate
+    stand_cond = self.generator.model.standardize_property(use_conditions)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/model/network.py", line 53, in standardize_property
+    assert property.keys() == self.property_keys, \
+AssertionError: Input Keys is not valid
+	Input:      {'hERG', 'slogp'}
+	Required:   {'mw'}
+
+2025-01-30 21:05:20,463 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:20] "[35m[1mPOST /process HTTP/1.1[0m" 500 -
+2025-01-30 21:05:20,502 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:20] "[36mGET /process?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:05:20,505 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:20] "[36mGET /process?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-01-30 21:05:20,523 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:20] "[36mGET /process?__debugger__=yes&cmd=resource&f=console.png&s=0GIzLeUAGAlVVSpmffdN HTTP/1.1[0m" 304 -
+2025-01-30 21:05:48,346 - __main__ - INFO - model init: mw
+2025-01-30 21:05:48,346 - __main__ - INFO - 开始初始化模型，key: mw, conditions: {'mw': 545.0}
+2025-01-30 21:05:48,346 - __main__ - DEBUG - 使用配置文件: config/generation_config/mw.yaml
+2025-01-30 21:05:48,347 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-01-30 21:05:48,351 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/mw.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': 'None', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-01-30 21:05:48,356 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-01-30 21:05:48,357 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-01-30 21:05:55,756 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-01-30 21:05:55,757 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:55] "POST / HTTP/1.1" 200 -
+2025-01-30 21:05:55,784 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:55] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:05:55,790 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:55] "[36mGET /static/images/giphy.gif HTTP/1.1[0m" 304 -
+2025-01-30 21:05:55,794 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:05:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-30 21:06:04,956 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:06:04] "POST /process HTTP/1.1" 200 -
+2025-01-30 21:06:04,981 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:06:04] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-01-30 21:06:04,984 - werkzeug - INFO - 127.0.0.1 - - [30/Jan/2025 21:06:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 13:49:46,131 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 13:49:46,132 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 13:49:46,135 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 13:49:55,651 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 13:49:55,674 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 13:49:55,866 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:49:55] "GET / HTTP/1.1" 200 -
+2025-02-12 13:49:56,034 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:49:56] "GET /static/images/abstract.png HTTP/1.1" 200 -
+2025-02-12 13:49:56,183 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:49:56] "[33mGET /static/giphy.gif HTTP/1.1[0m" 404 -
+2025-02-12 13:50:02,937 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 13:50:02,938 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 13:50:02,939 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 13:50:02,947 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 13:50:02,947 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 13:50:02,947 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 13:50:03,214 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 13:50:03,540 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:50:03] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 13:50:03,621 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:50:03] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 13:50:03,626 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:50:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 13:50:42,611 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:50:42] "POST /compose HTTP/1.1" 200 -
+2025-02-12 13:50:42,667 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:50:42] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 13:50:42,697 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:50:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 13:51:00,305 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:51:00] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 13:51:00,368 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:51:00] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 13:51:00,370 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:51:00] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 13:51:00,414 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:51:00] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=kWs7QeMBA83KFptA4G9R HTTP/1.1" 200 -
+2025-02-12 13:51:00,464 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:51:00] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 13:52:33,856 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 13:52:34,576 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 13:52:54,698 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 13:52:54,699 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 13:52:54,701 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 13:53:01,052 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 13:53:01,075 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 13:53:01,252 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:01] "GET / HTTP/1.1" 200 -
+2025-02-12 13:53:01,360 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:01] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 13:53:03,645 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 13:53:03,646 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 13:53:03,650 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 13:53:03,656 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 13:53:03,657 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 13:53:03,657 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 13:53:03,976 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 13:53:04,082 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:04] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 13:53:04,154 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:04] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 13:53:04,158 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 13:53:07,029 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:07] "POST /compose HTTP/1.1" 200 -
+2025-02-12 13:53:07,087 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:07] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 13:53:07,098 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 13:53:11,527 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:11] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 13:53:11,583 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:11] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 13:53:11,583 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:11] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 13:53:11,614 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:11] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=NNb1sVCksRZYY6sEo7Gc HTTP/1.1" 200 -
+2025-02-12 13:53:11,679 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 13:53:11] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 14:04:48,676 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 14:04:49,325 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:04:58,897 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 14:04:58,898 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 14:04:58,899 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:05:05,247 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:05:05,265 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:05:05,429 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:05] "GET / HTTP/1.1" 200 -
+2025-02-12 14:05:05,542 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:05] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 14:05:07,871 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 14:05:07,872 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 14:05:07,873 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 14:05:07,884 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 14:05:07,884 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 14:05:07,884 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 14:05:08,043 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 14:05:08,143 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:08] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 14:05:08,210 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:08] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:05:08,214 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:05:11,927 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:11] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:05:11,984 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:05:11,995 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:11] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:05:14,340 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:14] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 14:05:14,395 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:14] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:05:14,396 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:14] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 14:05:14,440 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:14] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=VXf7GnWWDTyJqJYHmOTR HTTP/1.1" 200 -
+2025-02-12 14:05:14,479 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:05:14] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 14:05:49,331 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 14:05:50,000 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:05:56,842 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:05:56,861 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:07:11,320 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 14:07:11,320 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 14:07:11,322 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:07:17,911 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:07:17,930 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:07:18,098 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:18] "GET / HTTP/1.1" 200 -
+2025-02-12 14:07:18,203 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:18] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 14:07:20,439 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 14:07:20,440 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 14:07:20,445 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 14:07:20,453 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 14:07:20,453 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 14:07:20,455 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 14:07:20,588 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 14:07:20,677 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:20] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 14:07:20,748 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:20] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:07:20,751 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:07:23,535 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:23] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:07:23,595 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:23] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:07:23,599 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:07:25,456 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:25] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 14:07:25,508 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:25] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 14:07:25,513 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:25] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:07:25,545 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:25] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=hhrhZH1KdpHkL4ir3N0h HTTP/1.1" 200 -
+2025-02-12 14:07:25,584 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:07:25] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 14:09:23,283 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:09:23] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:18:47,453 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 14:18:48,253 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:19:04,225 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 14:19:04,225 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 14:19:04,229 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:19:10,736 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:19:10,756 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:19:10,925 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:10] "GET / HTTP/1.1" 200 -
+2025-02-12 14:19:11,053 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:11] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 14:19:13,252 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 14:19:13,253 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 14:19:13,254 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 14:19:13,261 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 14:19:13,261 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 14:19:13,261 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 14:19:13,397 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 14:19:13,462 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:13] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 14:19:13,537 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:19:13,545 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:13] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:19:16,184 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:16] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:19:16,243 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:16] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:19:16,246 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:19:18,200 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:18] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:19:18,265 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:18] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:19:18,266 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:19:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:25:30,077 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 14:25:30,078 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 14:25:30,079 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:25:36,394 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:25:36,425 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:25:36,658 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:25:36] "GET / HTTP/1.1" 200 -
+2025-02-12 14:25:36,756 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:25:36] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 14:25:38,183 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 14:25:38,184 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 14:25:38,187 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 14:25:38,196 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 14:25:38,196 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 14:25:38,196 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 14:25:38,400 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 14:25:38,471 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:25:38] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 14:25:38,535 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:25:38] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:25:38,539 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:25:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:35:00,879 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 14:35:00,879 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 14:35:00,881 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:35:06,846 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:35:06,864 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:35:07,036 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:07] "GET / HTTP/1.1" 200 -
+2025-02-12 14:35:07,171 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:07] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 14:35:14,124 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 14:35:14,125 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 14:35:14,127 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 14:35:14,131 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 14:35:14,132 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 14:35:14,132 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 14:35:14,260 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 14:35:14,357 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:14] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 14:35:14,430 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:14] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:35:14,438 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:35:27,589 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:27] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:35:27,643 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:27] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:35:27,646 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:35:48,219 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:48] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:35:48,266 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:48] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:35:48,270 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:35:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:37:35,009 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 14:37:35,680 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:37:43,706 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:37:43,725 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:38:02,696 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 14:38:13,039 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 14:38:13,040 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 14:38:13,041 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:38:18,914 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:38:18,934 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:38:19,117 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:38:19] "GET / HTTP/1.1" 200 -
+2025-02-12 14:38:19,206 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:38:19] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 14:38:21,232 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 14:38:21,232 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 14:38:21,235 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 14:38:21,245 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 14:38:21,245 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 14:38:21,245 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 14:38:21,475 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 14:38:21,543 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:38:21] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 14:38:21,615 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:38:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:38:21,646 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:38:21] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:38:37,548 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:38:37] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:38:37,609 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:38:37] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:38:37,615 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:38:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:39:09,795 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:39:09] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:39:09,858 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:39:09] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:39:09,865 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:39:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:39:28,594 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 14:39:28,594 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 14:39:28,598 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 14:39:34,467 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 14:39:34,486 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 14:39:34,656 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:39:34] "GET / HTTP/1.1" 200 -
+2025-02-12 14:39:34,764 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:39:34] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 14:39:36,461 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 14:39:36,462 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 14:39:36,464 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 14:39:36,472 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 14:39:36,473 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 14:39:36,473 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 14:39:36,579 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 14:39:36,645 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:39:36] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 14:39:36,705 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:39:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 14:39:36,705 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:39:36] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:40:18,723 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:40:18] "POST /compose HTTP/1.1" 200 -
+2025-02-12 14:40:18,786 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:40:18] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 14:40:18,792 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 14:40:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:10:15,678 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 15:10:16,910 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:10:27,639 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 15:10:27,709 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 15:10:37,353 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 15:10:37,353 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 15:10:37,355 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:10:44,029 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 15:10:44,047 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 15:10:44,214 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:10:44] "GET / HTTP/1.1" 200 -
+2025-02-12 15:10:44,342 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:10:44] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 15:10:47,313 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 15:10:47,314 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 15:10:47,317 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 15:10:47,322 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 15:10:47,322 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 15:10:47,323 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 15:10:47,580 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 15:10:47,657 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:10:47] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 15:10:47,722 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:10:47] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:10:47,729 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:10:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:10:56,669 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:10:56] "POST /compose HTTP/1.1" 200 -
+2025-02-12 15:10:56,726 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:10:56] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:10:56,730 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:10:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:13:20,204 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 15:13:20,205 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 15:13:20,206 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:13:26,088 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 15:13:26,109 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 15:13:26,293 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:26] "GET / HTTP/1.1" 200 -
+2025-02-12 15:13:26,419 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:26] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 15:13:28,284 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 15:13:28,284 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 15:13:28,288 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 15:13:28,296 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 15:13:28,297 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 15:13:28,297 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 15:13:28,415 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 15:13:28,480 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:28] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 15:13:28,546 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:28] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:13:28,553 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:13:33,889 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:33] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 15:13:33,948 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:33] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:13:33,954 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:33] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 15:13:34,011 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:34] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=xCpVhCs4EBQ8rAeDxXY1 HTTP/1.1" 200 -
+2025-02-12 15:13:34,058 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:13:34] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 15:14:10,697 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 15:14:11,361 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:14:20,445 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 15:14:20,445 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 15:14:20,446 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:14:26,365 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 15:14:26,383 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 15:14:26,549 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:26] "GET / HTTP/1.1" 200 -
+2025-02-12 15:14:26,658 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:26] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 15:14:28,874 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 15:14:28,875 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 15:14:28,877 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 15:14:28,888 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 15:14:28,888 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 15:14:28,888 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 15:14:29,002 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 15:14:29,065 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:29] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 15:14:29,123 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:29] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:14:29,126 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:14:34,610 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:34] "POST /compose HTTP/1.1" 200 -
+2025-02-12 15:14:34,669 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:34] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:14:34,673 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:14:53,615 - root - DEBUG - Core's 0th atom 'F' couldn't be connected with block.
+2025-02-12 15:14:53,642 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:53] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 15:14:53,699 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:53] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:14:53,699 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:53] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 15:14:53,714 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:53] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=V1MUGbgcaPBsmN0fpfh0 HTTP/1.1" 200 -
+2025-02-12 15:14:53,759 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:14:53] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 15:15:39,483 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 15:15:39,484 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 15:15:39,485 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:15:44,487 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 15:15:44,508 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 15:15:47,404 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:15:47] "GET / HTTP/1.1" 200 -
+2025-02-12 15:15:47,533 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:15:47] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 15:15:49,013 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 15:15:49,014 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 15:15:49,016 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 15:15:49,029 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 15:15:49,029 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 15:15:49,029 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 15:15:49,175 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 15:15:49,248 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:15:49] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 15:15:49,300 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:15:49] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:15:49,304 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:15:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:16:11,580 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:16:11] "POST /compose HTTP/1.1" 200 -
+2025-02-12 15:16:11,632 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:16:11] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:16:11,633 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:16:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:22:02,386 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 15:22:02,387 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 15:22:02,388 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:22:09,112 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 15:22:09,133 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 15:22:09,402 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:09] "GET / HTTP/1.1" 200 -
+2025-02-12 15:22:09,485 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:09] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 15:22:11,352 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 15:22:11,352 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 15:22:11,354 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 15:22:11,360 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 15:22:11,360 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 15:22:11,360 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 15:22:11,465 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 15:22:11,528 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:11] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 15:22:11,598 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:11] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:22:11,603 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:22:18,036 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:18] "POST /compose HTTP/1.1" 200 -
+2025-02-12 15:22:18,087 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:18] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:22:18,095 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:22:22,668 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:22] "POST /compose HTTP/1.1" 200 -
+2025-02-12 15:22:22,716 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:22] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:22:22,721 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:22:37,012 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 15:22:37,012 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 15:22:37,014 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:22:42,831 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 15:22:42,849 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 15:22:43,016 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:43] "GET / HTTP/1.1" 200 -
+2025-02-12 15:22:43,138 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:43] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 15:22:51,170 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 15:22:51,170 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 15:22:51,174 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 15:22:51,186 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 15:22:51,186 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 15:22:51,186 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 15:22:51,317 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 15:22:51,419 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:51] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 15:22:51,487 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:22:51,529 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:51] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:22:59,920 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:59] "POST /compose HTTP/1.1" 200 -
+2025-02-12 15:22:59,982 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:22:59,982 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:22:59] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:46:55,341 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 15:46:55,341 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 15:46:55,343 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 15:47:02,174 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 15:47:02,194 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 15:47:02,546 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:47:02] "GET / HTTP/1.1" 200 -
+2025-02-12 15:47:02,702 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:47:02] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 15:47:04,489 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 15:47:04,490 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 15:47:04,493 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 15:47:04,498 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 15:47:04,498 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 15:47:04,498 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 15:47:04,636 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 15:47:04,702 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:47:04] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 15:47:04,776 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:47:04] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:47:04,777 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:47:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:47:14,226 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:47:14] "POST /compose HTTP/1.1" 200 -
+2025-02-12 15:47:14,286 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:47:14] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 15:47:14,287 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:47:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:59:14,753 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:14] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 15:59:14,836 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:14] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:59:14,837 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:14] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 15:59:14,879 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:14] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=USmUj2ssCHlOXQnDkXaU HTTP/1.1" 200 -
+2025-02-12 15:59:14,929 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:14] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 15:59:35,813 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:35] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 15:59:35,878 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:35] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 15:59:35,878 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:35] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 15:59:35,898 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:35] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png&s=USmUj2ssCHlOXQnDkXaU HTTP/1.1[0m" 304 -
+2025-02-12 15:59:35,946 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 15:59:35] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 16:00:42,176 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 16:00:42,176 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 16:00:42,178 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:00:48,898 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 16:00:48,916 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 16:00:49,090 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:00:49] "GET / HTTP/1.1" 200 -
+2025-02-12 16:00:49,227 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:00:49] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 16:00:50,956 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 16:00:50,958 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 16:00:50,965 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 16:00:50,972 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 16:00:50,972 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 16:00:50,972 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 16:00:51,117 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 16:00:51,191 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:00:51] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 16:00:51,246 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:00:51] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 16:00:51,256 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:00:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:01:09,599 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:01:09] "POST /compose HTTP/1.1" 200 -
+2025-02-12 16:01:09,661 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:01:09] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 16:01:09,661 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:01:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:01:37,944 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 16:01:37,944 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 16:01:37,946 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:01:43,247 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 16:01:43,280 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 16:01:45,026 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:01:45] "GET / HTTP/1.1" 200 -
+2025-02-12 16:01:45,118 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:01:45] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 16:01:47,282 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 16:01:47,282 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 16:01:47,284 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 16:01:47,288 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 16:01:47,288 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 16:01:47,288 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 16:01:47,398 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 16:01:47,467 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:01:47] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 16:01:47,529 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:01:47] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 16:01:47,538 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:01:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:02:02,881 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:02:02] "POST /compose HTTP/1.1" 200 -
+2025-02-12 16:02:02,940 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:02:02] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 16:02:02,943 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:02:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:03:10,945 - root - DEBUG - Core's 19th atom 'N' couldn't be connected with block.
+2025-02-12 16:03:10,959 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:10] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-12 16:03:11,032 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:11] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:03:11,037 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:11] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 16:03:11,082 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:11] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=Pu0C3NJT2Lvvguu6LB1J HTTP/1.1" 200 -
+2025-02-12 16:03:11,119 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:11] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 16:03:26,575 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:26] "GET / HTTP/1.1" 200 -
+2025-02-12 16:03:26,646 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:26] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 16:03:28,614 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 16:03:28,615 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 16:03:28,616 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 16:03:28,619 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 16:03:28,619 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 16:03:28,619 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 16:03:28,682 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 16:03:28,738 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:28] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 16:03:28,800 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:28] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 16:03:28,809 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:03:37,736 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:37] "POST /compose HTTP/1.1" 200 -
+2025-02-12 16:03:37,795 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:03:37,812 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:03:37] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 16:04:05,434 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:04:05] "POST /compose HTTP/1.1" 200 -
+2025-02-12 16:04:05,489 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:04:05] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 16:04:05,492 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:04:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:15:55,981 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/src/generate/generator_utils.py', reloading
+2025-02-12 16:15:57,249 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:16:08,966 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 16:16:08,966 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 16:16:08,968 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:16:15,153 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 16:16:15,172 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 16:16:15,336 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:16:15] "GET / HTTP/1.1" 200 -
+2025-02-12 16:16:15,441 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:16:15] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 16:16:17,350 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 16:16:17,351 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 16:16:17,353 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 16:16:17,360 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 16:16:17,360 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 16:16:17,360 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 16:16:17,595 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 16:16:17,619 - __main__ - ERROR - 错误堆栈: Traceback (most recent call last):
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 154, in generate
+    return self._step(core_mol, stand_cond)
+  File "/Users/mac/Downloads/code/project/mol_opt/app/app.py", line 205, in _step
+    composed_mol = compose(core_mol, block_mol, atom_idx, 0)
+  File "/Users/mac/Downloads/code/project/mol_opt/src/generate/generator_utils.py", line 112, in compose
+    for brics_label in BRICS_ENV[brics_label_block] :
+KeyError: '0'
+
+2025-02-12 16:16:17,633 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:16:17] "[35m[1mPOST /case_study HTTP/1.1[0m" 500 -
+2025-02-12 16:16:17,710 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:16:17] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:16:17,719 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:16:17] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 16:16:17,791 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:16:17] "GET /case_study?__debugger__=yes&cmd=resource&f=console.png&s=BzzdfgHaAU0tRCQT97g3 HTTP/1.1" 200 -
+2025-02-12 16:16:17,845 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:16:17] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 16:16:56,314 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/src/generate/generator_utils.py', reloading
+2025-02-12 16:16:56,978 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:17:05,123 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 16:17:05,146 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 16:20:16,104 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 16:20:16,845 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:20:26,934 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 16:20:26,935 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 16:20:26,936 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:20:33,725 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 16:20:33,745 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 16:20:33,921 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:20:33] "GET / HTTP/1.1" 200 -
+2025-02-12 16:20:34,066 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:20:34] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 16:20:36,542 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 16:20:36,543 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 16:20:36,545 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 16:20:36,548 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 16:20:36,548 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 16:20:36,549 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 16:20:36,716 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 16:20:36,725 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:20:36] "[35m[1mPOST /case_study HTTP/1.1[0m" 500 -
+2025-02-12 16:20:36,808 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:20:36] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:20:36,816 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:20:36] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 16:20:36,861 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:20:36] "GET /case_study?__debugger__=yes&cmd=resource&f=console.png&s=r4ZvTRjRth8I0Q1wBm1o HTTP/1.1" 200 -
+2025-02-12 16:58:16,650 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 16:58:16,651 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 16:58:16,653 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:58:26,604 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 16:58:26,624 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 16:58:57,227 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:58:57] "GET / HTTP/1.1" 200 -
+2025-02-12 16:58:57,409 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:58:57] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 16:58:59,424 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 16:58:59,425 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 16:58:59,426 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 16:58:59,433 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 16:58:59,433 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 16:58:59,433 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 16:58:59,740 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 16:58:59,751 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:58:59] "[35m[1mPOST /case_study HTTP/1.1[0m" 500 -
+2025-02-12 16:58:59,827 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:58:59] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 16:58:59,828 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:58:59] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 16:58:59,890 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:58:59] "GET /case_study?__debugger__=yes&cmd=resource&f=console.png&s=H2TFI1LkuNWQPdhLdja9 HTTP/1.1" 200 -
+2025-02-12 16:59:34,784 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-12 16:59:36,017 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:59:48,700 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 16:59:48,702 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 16:59:48,704 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 16:59:54,197 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 16:59:54,215 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 16:59:59,656 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:59:59] "GET / HTTP/1.1" 200 -
+2025-02-12 16:59:59,974 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 16:59:59] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 17:00:01,725 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 17:00:01,725 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 17:00:01,726 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 17:00:01,736 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 17:00:01,736 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 17:00:01,736 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 17:00:01,933 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 17:00:01,945 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:00:01] "[35m[1mPOST /case_study HTTP/1.1[0m" 500 -
+2025-02-12 17:00:02,012 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:00:02] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:00:02,012 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:00:02] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 17:00:02,077 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:00:02] "GET /case_study?__debugger__=yes&cmd=resource&f=console.png&s=xpqLR5dkl54x2EBtP3Q5 HTTP/1.1" 200 -
+2025-02-12 17:02:34,256 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 17:02:34,257 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 17:02:34,260 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 17:02:41,872 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 17:02:41,891 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 17:02:42,063 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:02:42] "GET / HTTP/1.1" 200 -
+2025-02-12 17:02:42,178 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:02:42] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 17:02:43,523 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 17:02:43,523 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 17:02:43,525 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 17:02:43,532 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 17:02:43,533 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 17:02:43,533 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 17:02:43,698 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 17:02:43,861 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:02:43] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 17:02:43,926 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:02:43] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:02:43,930 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:02:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:02:54,466 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:02:54] "POST /compose HTTP/1.1" 200 -
+2025-02-12 17:02:54,521 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:02:54] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:02:54,524 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:02:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:05:05,310 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 17:05:05,310 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 17:05:05,313 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 17:05:11,781 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 17:05:11,799 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 17:05:11,960 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:11] "GET / HTTP/1.1" 200 -
+2025-02-12 17:05:12,063 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:12] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 17:05:13,807 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 17:05:13,808 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 17:05:13,809 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 17:05:13,817 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 17:05:13,818 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 17:05:13,818 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 17:05:14,025 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 17:05:14,032 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:14] "[35m[1mPOST /case_study HTTP/1.1[0m" 500 -
+2025-02-12 17:05:14,093 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:14] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:05:14,096 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:14] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-12 17:05:14,157 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:14] "GET /case_study?__debugger__=yes&cmd=resource&f=console.png&s=7Vya4bxPC4afLYczDMFH HTTP/1.1" 200 -
+2025-02-12 17:05:14,203 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:14] "[36mGET /case_study?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-12 17:05:37,372 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 17:05:37,373 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 17:05:37,375 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 17:05:43,190 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 17:05:43,210 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 17:05:43,371 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:43] "GET / HTTP/1.1" 200 -
+2025-02-12 17:05:43,472 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:43] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 17:05:48,414 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 17:05:48,415 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 17:05:48,416 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 17:05:48,426 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 17:05:48,426 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 17:05:48,426 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 17:05:48,534 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 17:05:48,600 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:48] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 17:05:48,674 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:48] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:05:48,675 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:05:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:06:03,423 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:06:03] "POST /compose HTTP/1.1" 200 -
+2025-02-12 17:06:03,475 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:06:03] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:06:03,480 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:06:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:06:17,778 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:06:17] "POST /compose HTTP/1.1" 200 -
+2025-02-12 17:06:17,827 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:06:17] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:06:17,832 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:06:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:26:25,244 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 17:26:25,245 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 17:26:25,248 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 17:26:32,157 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 17:26:32,187 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 17:26:32,383 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:26:32] "GET / HTTP/1.1" 200 -
+2025-02-12 17:26:32,503 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:26:32] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 17:26:34,478 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 17:26:34,479 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 17:26:34,485 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 17:26:34,492 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 17:26:34,492 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 17:26:34,492 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 17:26:34,653 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 17:26:34,805 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:26:34] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 17:26:34,864 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:26:34] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:26:34,869 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:26:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:26:51,609 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:26:51] "POST /compose HTTP/1.1" 200 -
+2025-02-12 17:26:51,663 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:26:51] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:26:51,668 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:26:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:27:03,062 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:03] "POST /compose HTTP/1.1" 200 -
+2025-02-12 17:27:03,122 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:03] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:27:03,126 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:27:24,754 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-12 17:27:24,755 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-12 17:27:24,756 - werkzeug - INFO -  * Restarting with stat
+2025-02-12 17:27:30,670 - werkzeug - WARNING -  * Debugger is active!
+2025-02-12 17:27:30,689 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-12 17:27:30,851 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:30] "GET / HTTP/1.1" 200 -
+2025-02-12 17:27:30,955 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:30] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-12 17:27:33,160 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-12 17:27:33,161 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-12 17:27:33,164 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-12 17:27:33,169 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-12 17:27:33,169 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-12 17:27:33,169 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-12 17:27:33,274 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-12 17:27:33,338 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:33] "POST /case_study HTTP/1.1" 200 -
+2025-02-12 17:27:33,394 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:33] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:27:33,402 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-12 17:27:42,142 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:42] "POST /compose HTTP/1.1" 200 -
+2025-02-12 17:27:42,201 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:42] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-12 17:27:42,204 - werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 17:27:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:23:32,071 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:23:32,071 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:23:32,073 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:23:38,755 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:23:38,776 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:23:39,170 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:23:39] "GET / HTTP/1.1" 200 -
+2025-02-13 09:23:39,293 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:23:39] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:23:41,109 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:23:41,110 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:23:41,112 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:23:41,129 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:23:41,129 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:23:41,129 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:23:41,610 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:23:42,168 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:23:42] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:23:42,255 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:23:42] "GET /static/style.css HTTP/1.1" 200 -
+2025-02-13 09:23:42,301 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:23:42] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:24:42,438 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:24:42,439 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:24:42,441 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:24:48,674 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:24:48,693 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:24:48,872 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:24:48] "GET / HTTP/1.1" 200 -
+2025-02-13 09:24:48,995 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:24:48] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:24:50,836 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:24:50,838 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:24:50,842 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:24:50,849 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:24:50,849 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:24:50,850 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:24:50,967 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:24:51,036 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:24:51] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:24:51,128 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:24:51] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:24:51,130 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:24:51] "GET /static/style.css HTTP/1.1" 200 -
+2025-02-13 09:26:56,624 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:26:56,625 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:26:56,627 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:27:03,327 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:27:03,346 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:27:03,520 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:27:03] "GET / HTTP/1.1" 200 -
+2025-02-13 09:27:03,650 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:27:03] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:27:05,503 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:27:05,506 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:27:05,507 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:27:05,510 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:27:05,510 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:27:05,510 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:27:05,621 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:27:05,690 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:27:05] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:27:05,778 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:27:05] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:27:05,798 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:27:05] "GET /static/style.css HTTP/1.1" 200 -
+2025-02-13 09:28:05,788 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:28:05,789 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:28:05,790 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:28:11,102 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:28:11,122 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:28:15,232 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:28:15] "GET / HTTP/1.1" 200 -
+2025-02-13 09:28:15,343 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:28:15] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:28:18,871 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:28:18,871 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:28:18,873 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:28:18,879 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:28:18,879 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:28:18,879 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:28:18,989 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:28:19,057 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:28:19] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:28:19,126 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:28:19] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:28:19,127 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:28:19] "GET /static/style.css HTTP/1.1" 200 -
+2025-02-13 09:28:56,822 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:28:56] "POST /compose HTTP/1.1" 200 -
+2025-02-13 09:28:56,895 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:28:56] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:28:56,926 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:28:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:29:51,502 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:29:51] "POST /compose HTTP/1.1" 200 -
+2025-02-13 09:29:51,585 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:29:51] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:29:51,600 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:29:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:30:19,692 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:30:19,694 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:30:19,697 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:30:26,074 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:30:26,092 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:30:26,268 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:26] "GET / HTTP/1.1" 200 -
+2025-02-13 09:30:26,405 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:26] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:30:28,602 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:30:28,602 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:30:28,605 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:30:28,616 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:30:28,617 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:30:28,617 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:30:28,727 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:30:28,796 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:28] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:30:28,873 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:28] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:30:28,901 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:30:31,869 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:31] "POST /compose HTTP/1.1" 200 -
+2025-02-13 09:30:31,944 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:31] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:30:31,950 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:30:55,748 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:55] "POST /compose HTTP/1.1" 200 -
+2025-02-13 09:30:55,827 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:55] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:30:55,832 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:30:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:38:38,663 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-13 09:38:45,430 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:38:45,431 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:38:45,438 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:38:51,909 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:38:51,926 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:38:52,096 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:38:52] "GET / HTTP/1.1" 200 -
+2025-02-13 09:38:52,187 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:38:52] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:38:53,745 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:38:53,747 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:38:53,748 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:38:53,754 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:38:53,754 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:38:53,755 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:38:53,864 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:38:53,932 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:38:53] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:38:54,019 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:38:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:38:54,050 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:38:54] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:41:42,880 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:41:42,880 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:41:42,882 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:41:50,026 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:41:50,043 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:41:50,222 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:41:50] "GET / HTTP/1.1" 200 -
+2025-02-13 09:41:50,338 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:41:50] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:41:52,230 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:41:52,230 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:41:52,232 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:41:52,235 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:41:52,236 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:41:52,236 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:41:52,358 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:41:52,431 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:41:52] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:41:52,492 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:41:52] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:41:52,502 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:41:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:42:38,945 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:42:38] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-13 09:42:39,026 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:42:39] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-13 09:42:39,029 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:42:39] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:42:39,103 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:42:39] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=ejJgo7HzPDN3ohIO5Try HTTP/1.1" 200 -
+2025-02-13 09:42:39,140 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:42:39] "[36mGET /compose?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-02-13 09:44:42,888 - werkzeug - INFO -  * Detected change in '/Users/mac/Downloads/code/project/mol_opt/app/app.py', reloading
+2025-02-13 09:44:43,751 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:44:52,079 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:44:52,080 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:44:52,081 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:44:58,602 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:44:58,623 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:44:59,060 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:44:59] "GET / HTTP/1.1" 200 -
+2025-02-13 09:44:59,175 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:44:59] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:45:01,052 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:45:01,052 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:45:01,054 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:45:01,063 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:45:01,063 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:45:01,063 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:45:01,170 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:45:01,241 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:45:01] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:45:01,317 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:45:01] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:45:01,328 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:45:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:45:14,682 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:45:14] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-13 09:45:14,766 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:45:14] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:45:14,791 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:45:14] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-13 09:45:14,822 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:45:14] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=cg5M5WuGpUc6E3VRvZ9U HTTP/1.1" 200 -
+2025-02-13 09:46:53,943 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:46:53,943 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:46:53,945 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:47:00,644 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:47:00,672 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:47:03,797 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:03] "GET / HTTP/1.1" 200 -
+2025-02-13 09:47:04,095 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:04] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:47:05,883 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:47:05,884 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:47:05,886 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:47:05,893 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:47:05,894 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:47:05,894 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:47:06,053 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:47:06,138 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:06] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:47:06,230 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:06] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:47:06,231 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:47:24,258 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:24] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-13 09:47:24,344 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:24] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:47:24,350 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:24] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-13 09:47:24,399 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:47:24] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=eRIkHJfdUqknAinNF1P9 HTTP/1.1" 200 -
+2025-02-13 09:48:37,573 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-13 09:48:37,573 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-02-13 09:48:37,574 - werkzeug - INFO -  * Restarting with stat
+2025-02-13 09:48:43,706 - werkzeug - WARNING -  * Debugger is active!
+2025-02-13 09:48:43,725 - werkzeug - INFO -  * Debugger PIN: 115-625-233
+2025-02-13 09:48:43,897 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:48:43] "GET / HTTP/1.1" 200 -
+2025-02-13 09:48:44,046 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:48:44] "[36mGET /static/images/abstract.png HTTP/1.1[0m" 304 -
+2025-02-13 09:48:46,406 - __main__ - INFO - 开始初始化模型，key: case, conditions: {'logp': 4.15}
+2025-02-13 09:48:46,406 - __main__ - DEBUG - 使用配置文件: /Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml
+2025-02-13 09:48:46,408 - __main__ - DEBUG - 解析参数: Namespace(generator_config='config/generastor.yaml', model_path=None, library_path=None, library_builtin_model_path=None, output_path=None, num_samples=1, seed=None, q=False, scaffold=None, scaffold_path=None)
+2025-02-13 09:48:46,418 - __main__ - DEBUG - 加载配置: {'model_path': '/home/chaoxue/code/mol_opt/weight/logp.tar', 'library_path': './data/ZINC/library.csv', 'library_builtin_model_path': '/Users/mac/Downloads/code/project/mol_opt/builtin_model/case.tar', 'window_size': 2000, 'alpha': 0.75, 'max_iteration': 10}
+2025-02-13 09:48:46,418 - __main__ - INFO - 开始初始化 MoleculeBuilder
+2025-02-13 09:48:46,419 - __main__ - DEBUG - 导入 MoleculeBuilder 成功
+2025-02-13 09:48:46,550 - __main__ - INFO - MoleculeBuilder 初始化成功
+2025-02-13 09:48:46,656 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:48:46] "POST /case_study HTTP/1.1" 200 -
+2025-02-13 09:48:46,748 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:48:46] "[33mGET /static/images/totoro.gif HTTP/1.1[0m" 404 -
+2025-02-13 09:48:46,763 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:48:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:49:15,142 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:49:15] "[35m[1mPOST /compose HTTP/1.1[0m" 500 -
+2025-02-13 09:49:15,229 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:49:15] "[36mGET /compose?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-02-13 09:49:15,239 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:49:15] "[36mGET /compose?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-02-13 09:49:15,284 - werkzeug - INFO - 127.0.0.1 - - [13/Feb/2025 09:49:15] "GET /compose?__debugger__=yes&cmd=resource&f=console.png&s=yt9UCH7AttnrBJSkKK3j HTTP/1.1" 200 -

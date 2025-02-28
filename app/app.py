@@ -40,7 +40,7 @@ MODEL_CONFIG_MAP = {
     'mw': r'config/generation_config/mw.yaml',
     'mw_tpsa_logP_qed': r'config/generation_config/mw_tpsa_logP_qed.yaml',
     'qed': r'config/generation_config/qed.yaml',
-    'tpsa': r'config/generation_config/tpsa.yaml',
+    'tpsa': r'/Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml',
 }
 
 # 设置日志配置
@@ -71,6 +71,8 @@ class ModelManager:
             'mw_logp_tpsa_qed': r'config/generation_config/mw_logp_tpsa_qed.yaml',
             'qed': r'config/generation_config/qed.yaml',
             'tpsa': r'config/generation_config/tpsa.yaml',
+            'hERG_slogp': r'config/generation_config/hERG_BBBP.yaml',
+            'case': r'/Users/mac/Downloads/code/project/mol_opt/config/generation_config/case_study.yaml'
         }
     
     def initialize(self, new_key, conditions):
@@ -144,10 +146,8 @@ class ModelManager:
             if self.generator is None:
                 raise Exception("生成器未初始化")
             
-            # 使用存储的条件或传入的条件
             use_conditions = conditions if conditions is not None else self.conditions
             
-            # 将mol对象转换为SMILES
             core_mol: Mol = convert2rdmol(scaffold_mol)
             self.current_scaffold_mol = core_mol
             stand_cond = self.generator.model.standardize_property(use_conditions)
@@ -177,23 +177,22 @@ class ModelManager:
 
         # Sampling building blocks
         prob_dist_block = self.generator.get_prob_dist_block(core_mol, Z_core)
-        sampled_indices = torch.multinomial(prob_dist_block, 10, replacement=False)
+        num_nonzero = (prob_dist_block > 0).sum().item()
+        actual_samples = min(5, num_nonzero)
+        sampled_indices = torch.multinomial(prob_dist_block, actual_samples, replacement=True)
         # print(sampled_indices)
         sampled_probs = prob_dist_block[sampled_indices]
         # print(sampled_probs)
 
         step_res = []
         for idx,prob in zip(sampled_indices, sampled_probs):
-            print(0)
             block_mol = self.generator.library.get_rdmol(idx)
             print(Chem.MolToSmiles(block_mol))
-            print(1)
             Z_block = self.generator.Z_library[idx].unsqueeze(0)
-            print(2)
             try:
                 print(Chem.MolToSmiles(block_mol))
                 atom_idx = self.generator.predict_atom_idx(core_mol, block_mol, pygdata_core, x_upd_core, Z_core, Z_block)
-                print(3)
+                print(f'atom_idx: {atom_idx}')
             except Exception as e:
                 import traceback
                 print("完整的错误追踪:")
@@ -202,16 +201,13 @@ class ModelManager:
                 raise  # 重新抛出异常，保持原有的错误处理流程
             if atom_idx is None :
                 continue
-            print(4)
             try:
                 composed_mol = compose(core_mol, block_mol, atom_idx, 0)
             except Exception as e:
                 import traceback
                 print("完整的错误追踪:")
                 print(traceback.format_exc())
-                
                 raise
-            print(5)
             if composed_mol is not None :
                 step_res.append((block_mol, prob, atom_idx))
                 if len(step_res) >= 5:
@@ -238,6 +234,8 @@ def index():
         tpsa = request.form.get('tpsa','')
         logp = request.form.get('logp','')
         qed = request.form.get('qed','')
+        hERG = request.form.get('hERG','')
+        slogp = request.form.get('slogp','')
 
         conditions = {}
         if mw:
@@ -248,6 +246,10 @@ def index():
             conditions['tpsa'] = float(tpsa)
         if qed:
             conditions['qed'] = float(qed)
+        if hERG:
+            conditions['hERG'] = float(hERG)
+        if hERG:
+            conditions['slogp'] = float(slogp)
 
         # 检查至少有一个输入
         if not conditions:
@@ -259,6 +261,17 @@ def index():
         flash('Model Initialized')
     return render_template('index.html')
 
+@app.route('/case_study', methods=['POST'])
+def case_study():
+    key = 'case'
+    conditions = {'logp':4.15}
+    model_manager.initialize(key, conditions)
+    smi = 'C1(C2CCN(C3=CC4=NN=CN4C=C3)CC2)=CC=CC=C1'
+    mol = Chem.MolFromSmiles(smi)
+    scaffold_img, process_res = _do_process(mol, model_manager.conditions)
+    return render_template('workflow.html', scaffold_img=scaffold_img, process_res=process_res)
+
+
 @app.route('/process', methods=['POST'])
 def process_mol():
     smi = request.form.get('scaffold_smi')
@@ -266,35 +279,27 @@ def process_mol():
     if mol is None:
         return "Invalid SMILES", 400
     
-    # scaffold_img = draw_molecule_with_atom_indices(mol)
-    # logger.info(f"mol: {mol}")
-    # logger.info(f"conditions: {model_manager.conditions}")
-    # signal, process_res = model_manager.generate(mol, model_manager.conditions)
-    # logger.info(f"process_res: {process_res}")
-
-    # if signal == TERMINATION:
-    #     message = "优化结束"
-    #     return render_template('workflow.html', message=message, scaffold_img=scaffold_img)
-    # elif signal == FAIL:
-    #     message = "优化失败"
-    #     return render_template('workflow.html', message=message, scaffold_img=scaffold_img)
+    scaffold_img = draw_molecule_with_atom_indices(mol)
     
-    # process_res = [(x, draw_molecule_with_atom_indices(x, False),
-    #                 f"{(y * 100):.2f}%",z) for x,y,z in process_res]
-    scaffold_img, process_res = _do_process(mol, model_manager.conditions)
+    _, process_res = _do_process(mol, model_manager.conditions)
     
     return render_template('workflow.html', scaffold_img=scaffold_img, process_res=process_res)
 
 def _do_process(scaffold_mol, conditions):
+    
+    # core_mol = model_manager.current_scaffold_mol
+    scaffold_mol = convert2rdmol(scaffold_mol)
     scaffold_img = draw_molecule_with_atom_indices(scaffold_mol)
+    # scaffold_img = draw_molecule_with_atom_indices(core_mol)
     signal, process_res = model_manager.generate(scaffold_mol, conditions)
     if signal == TERMINATION:
         message = "优化结束"
-        return render_template('finish.html', message=message, scaffold_img=scaffold_img)
+        response =  render_template('finished.html', message=message, scaffold_img=scaffold_img)
+        raise ProcessTermination(response)
     elif signal == FAIL:
         message = "优化失败"
-        return render_template('finish.html', message=message, scaffold_img=scaffold_img)
-    
+        response =  render_template('finished.html', message=message, scaffold_img=scaffold_img)
+        raise ProcessTermination(response)
     # mol_pkl = pickle.dumps(mol)
     # mol_b64 = base64.b64encode(mol_pkl).decode()
 
@@ -305,16 +310,35 @@ def _do_process(scaffold_mol, conditions):
                     for idx,(x,y,z) in enumerate(process_res)]
     
     return scaffold_img, process_res
+
+class ProcessTermination(Exception):
+    """用于终止优化流程并直接返回页面"""
+    def __init__(self, response):
+        self.response = response
     
 @app.route('/compose', methods=['GET', 'POST'])
 def process_compose():
     core_mol = model_manager.current_scaffold_mol
+    smi = request.form.get('custom_smi')
 
-    select_idx = int(request.form.get('select_idx'))
-    build_block_mol, _, core_idx = model_manager.get_process(select_idx)
+    if smi:
+        build_block_mol = convert2rdmol(smi)
+        core_idx = int(request.form.get('index'))
+    else:
+        select_idx = int(request.form.get('select_idx'))
+        build_block_mol, _, core_idx = model_manager.get_process(select_idx)
+
+    # select_idx = int(request.form.get('select_idx'))
+    # build_block_mol, _, core_idx = model_manager.get_process(select_idx)
+    # if smi:
+    #     build_block_mol = convert2rdmol(smi)
+    # core_idx = int(request.form.get('index'))
 
     composed_mol = compose(core_mol, build_block_mol, core_idx, 0)
-    scaffold_img, process_res = _do_process(composed_mol, model_manager.conditions)
+    try:
+        scaffold_img, process_res = _do_process(composed_mol, model_manager.conditions)
+    except ProcessTermination as e:
+        return e.response
     return render_template('workflow.html', scaffold_img=scaffold_img, process_res=process_res)
 
 def draw_molecule_with_atom_indices(mol, add_atom_indices=True):
@@ -343,7 +367,6 @@ def draw_molecule_with_atom_indices(mol, add_atom_indices=True):
     
     return f'data:image/png;base64,{img_str}'
 
-    
 
 if __name__ == '__main__':
     app.run(debug=True)
